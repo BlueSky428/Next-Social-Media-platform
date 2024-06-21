@@ -1,0 +1,25 @@
+[{
+        "path": "/",
+        "component": "Marketplace",
+        "exact": true,
+        "auth": false
+    },
+    {
+        "path": "/register",
+        "component": "index",
+        "exact": true,
+        "auth": false
+    },
+    {
+        "path": "/Login",
+        "component": "Login",
+        "exact": true,
+        "auth": false
+    },
+    {
+        "path": "/Checkout",
+        "component": "index",
+        "exact": true,
+        "auth": false
+    }
+]
