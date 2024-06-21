@@ -1,7 +1,8 @@
 import { FC } from "react";
-import Marketplace from "./marketplace";
 import FirstComponent from "@/app/components/MarketplaceComponent/firstComponent";
 import SecondComponent from "@/app/components/MarketplaceComponent/secondComponent";
+import ReviewsComponent from "@/app/components/MarketplaceComponent/reviews";
+import Marketplace from "@/app/components/MarketplaceComponent/marketplace";
 
 const MarketPlaceIndex: FC = () => {
     return (
@@ -9,6 +10,7 @@ const MarketPlaceIndex: FC = () => {
             <FirstComponent />
             <Marketplace />
             <SecondComponent />
+            <ReviewsComponent />
         </div>
     )
 }
