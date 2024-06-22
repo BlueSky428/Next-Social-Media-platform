@@ -5,6 +5,7 @@ import ReviewsComponent from "@/app/components/MarketplaceComponent/reviews";
 import Marketplace from "@/app/components/MarketplaceComponent/marketplace";
 import BestFreelancer from "@/app/components/MarketplaceComponent/bestFreelancer";
 import MarketFAQ from "@/app/components/MarketplaceComponent/markepFAQ";
+import PriceComponent from "@/app/components/MarketplaceComponent/priceComponent";
 
 const MarketPlaceIndex: FC = () => {
     return (
@@ -15,6 +16,7 @@ const MarketPlaceIndex: FC = () => {
             <ReviewsComponent />
             <BestFreelancer />
             <MarketFAQ />
+            <PriceComponent />
         </div>
     )
 }

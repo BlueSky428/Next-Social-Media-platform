@@ -54,7 +54,6 @@ const Footer: FC = () => {
                     <div className="lg:mx-auto text-left ">
                         <h4 className="text-lg text-gray-900 font-medium mb-7">My Account</h4>
                         <ul className="text-sm  transition-all duration-500">
-                            <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">support@influencity.io</a></li>
                             <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Login</a></li>
                             <li ><a href="/" className=" text-gray-600 hover:text-gray-900">Sign up</a></li>
                         </ul>

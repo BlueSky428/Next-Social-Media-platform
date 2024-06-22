@@ -77,8 +77,8 @@ const MarketFAQ = () => {
 
     return (
         <div className="flex justify-center items-center my-2 mt-12">
-            <div className="px-72 lg:w-full sm:w-10/12 md:w-1/2 my-1 ">
-                <h2 className="text-2xl font-semibold text-vnet-blue mb-2 text-center font-bold text-gray-600">Frequently Asked Questions</h2>
+            <div className="md:px-10 lg:w-4/5 sm:w-10/12 md:w-full my-1 w-full">
+                <h2 className="text-2xl font-semibold text-vnet-blue mb-2 text-center font-bold text-gray-600 w-full">Frequently Asked Questions</h2>
                 <ul className="flex flex-col py-6">
                     {accordionData.map((item) => (
                         <AccordionItem key={item.id} {...item} />
