@@ -1,6 +1,6 @@
 [{
         "path": "/",
-        "component": "Marketplace",
+        "component": "index",
         "exact": true,
         "auth": false
     },
@@ -19,6 +19,12 @@
     {
         "path": "/Checkout",
         "component": "index",
+        "exact": true,
+        "auth": false
+    },
+    {
+        "path": "/Marketplace",
+        "component": "Marketplace",
         "exact": true,
         "auth": false
     }

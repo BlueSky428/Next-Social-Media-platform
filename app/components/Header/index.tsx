@@ -4,6 +4,10 @@ import { FC, useState } from "react";
 const Header: FC = () => {
     const [open, setOpen] = useState(false);
 
+    const Go_To_MarketPage = (item: string) => {
+        window.location.href = "/Marketplace"
+    }
+
     return (
         <div className="antialiased bg-gray-100 dark:bg-gray-900 w-full fixed z-[50] shadow-lg backdrop-filter backdrop-blur-lg">
             <div className="w-full text-gray-700 bg-white dark:text-black dark:bg-white-900">
@@ -34,9 +38,8 @@ const Header: FC = () => {
                     </div>
                     <nav className={`flex-col flex-grow ${open ? 'flex' : 'hidden'} pb-4 md:pb-0 md:flex md:justify-end md:flex-row`}>
                         {['Home', 'FAQ', 'Blog', 'Contact', 'My Account'].map((item) => (
-                            <a key={item}
+                            <a key={item} onClick={() => Go_To_MarketPage(item)}
                                 className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg dark:bg-transparent dark:hover:bg-[#581C87] dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 hover:text-white-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#"
                             >
                                 {item}
                             </a>

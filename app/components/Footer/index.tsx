@@ -1,4 +1,4 @@
-import { faFacebook, faGoogle, faInstagram, faLinkedin, faSoundcloud, faSpotify, faTiktok, faTwitch, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC } from "react";
 
@@ -65,8 +65,8 @@ const Footer: FC = () => {
                         </span>
                     </div>
                     <div className="flex justify-between items-center w-32 lg:absolute lg:right-0 md:absolute md:right-0 sm:absolute sm:right-0">
-                        <a className="cursor-pointer text-[#581C87] text-sm">Terms</a>
-                        <a className="cursor-pointer text-[#581C87] text-sm">Privacy</a>
+                        <a className="cursor-pointer text-black text-sm">Terms</a>
+                        <a className="cursor-pointer text-black text-sm">Privacy</a>
                     </div>
                 </div>
             </div>
