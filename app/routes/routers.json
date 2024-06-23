@@ -1,6 +1,6 @@
 [{
         "path": "/",
-        "component": "index",
+        "component": "Service",
         "exact": true,
         "auth": false
     },
