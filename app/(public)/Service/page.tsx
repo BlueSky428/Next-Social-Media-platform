@@ -12,7 +12,7 @@ import Navigate from "@/app/components/Service/navigate"
 const Service: FC = () => {
 
     return (
-        <div className="relative flex min-h-screen flex-col overflow-hidden bg-white sm:py-12">
+        <div className="relative flex md:justify-center md:items-center sm:justify-center sm:items-center min-h-screen flex-col overflow-hidden bg-white sm:py-12">
             <Navigate />
             <ServiceHeader />
             <DetailContent />

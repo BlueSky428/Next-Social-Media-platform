@@ -59,3 +59,34 @@ body {
 .star.filled {
   color: gold;
 }
+
+.responsiveItem {}
+
+.responsiveItem-one {
+  display: none;
+}
+
+@media screen and (max-width: 1466px) {
+  .responsiveItem-one {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  .responsiveItem {
+    display: none;
+  }
+
+  .responsiveItem-one {
+    display: flex;
+    gap: 4;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .responsiveItem-one {
+    display: flex;
+    flex-direction: column;
+    gap: 4;
+  }
+}

@@ -42,10 +42,13 @@ const ServiceFAQ: FC = () => {
     ];
 
     const AccordionItem: React.FC<AccordionItemProps> = ({ id, question, answer }) => {
-        const [isOpen, setIsOpen] = useState(false);
+        const [isOpen, setIsOpen] = useState<boolean>(false);
+        const [bgColor, setBgColor] = useState<boolean>(false);
 
         const handleClick = () => {
             setIsOpen(!isOpen);
+            if (bgColor) setBgColor(false);
+            else setBgColor(true);
         };
 
         const handleRotate = () => (isOpen ? 'rotate-180' : '');
@@ -53,7 +56,7 @@ const ServiceFAQ: FC = () => {
         const handleToggle = () => (isOpen ? 'max-h-screen' : 'max-h-0');
 
         return (
-            <li className="bg-white my-2 shadow-sm">
+            <li className={`my-2 shadow-sm transition duration-400 ${bgColor ? "bg-[#F1FCFA]" : "bg-white"}`}>
                 <h2
                     onClick={handleClick}
                     className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
@@ -67,7 +70,7 @@ const ServiceFAQ: FC = () => {
                     </svg>
                 </h2>
                 <div
-                    className={`border-l-2 border-purple-600 overflow-hidden duration-500 transition-all ${handleToggle()}`}
+                    className={`overflow-hidden duration-350 transition-all bg-[#F1FCFA] ${handleToggle()}`}
                 >
                     <p className="p-3 text-gray-900">{answer}</p>
                 </div>
@@ -77,7 +80,7 @@ const ServiceFAQ: FC = () => {
 
     return (
         <main className="w-full bg-white lg:px-24">
-            <div className="relative lg:w-[65%] md:w-[70%] overflow-hidden rounded-md p-2 sm:p-4">
+            <div className="relative lg:w-[65%] md:w-[70%] overflow-hidden rounded-md p-2 sm:p-4 border-t border-b">
                 <div className="lg:w-full sm:w-full md:w-full my-1 w-full">
                     <h2 className="text-xl font-semibold text-vnet-blue font-bold w-full">Frequently Asked Questions</h2>
                     <ul className="flex flex-col py-6">

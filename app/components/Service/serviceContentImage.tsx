@@ -9,7 +9,6 @@ const ServiceImageContent: FC = () => {
     const [currentIndex, setCurrentIndex] = useState(1);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [sliderCount, setSliderCount] = useState<number>(8);
-    const [isShowImage, setIsShowImage] = useState<boolean>(false);
 
     const images = [
         '/image/img/1.jpg',
@@ -53,8 +52,8 @@ const ServiceImageContent: FC = () => {
 
     return (
         <>
-            <main className="py-8 w-full bg-white lg:px-24 relative">
-                <div className="relative lg:w-[65%] md:w-[70%] overflow-hidden rounded-md bg-gray-900 p-2 sm:p-4">
+            <main className="py-8 w-full bg-white lg:px-24 relative md:justify-center md:items-center sm:justify-center sm:items-center justify-center items-center border">
+                <div className="relative lg:w-[65%] md:w-full sm:w-ful overflow-hidden rounded-md bg-gray-900 p-2 sm:p-4">
                     <div className="absolute right-5 top-5 z-10 rounded-full bg-gray-900 px-2 text-center text-sm text-white">
                         <span>{currentIndex}</span>/<span>{images.length}</span>
                     </div>
@@ -83,7 +82,7 @@ const ServiceImageContent: FC = () => {
                     </div>
                 </div>
 
-                <div className={`w-auto h-auto absolute right-24 ${isMobile ? "hidden" : ""}`} style={{ "top": "-10rem" }}>
+                <div className={`w-auto h-auto absolute right-24 responsiveItem`} style={{ "top": "-10rem" }}>
                     <div className="flex flex-col max-w-sm p-6 mx-auto text-center text-gray-900 bg-white border shadow-lg
                                 border-[#581C87] rounded-lg shadow dark:border-[#581C87] xl:p-8 dark:bg-white dark:text-white">
                         <div className="flex items-center justify-center flex-col">
@@ -162,7 +161,7 @@ const ServiceImageContent: FC = () => {
                     </div>
                 </div>
             </main>
-            <div className="w-full px-24">
+            <div className="w-full lg:px-24">
                 <Swiper
                     spaceBetween={5}
                     slidesPerView={sliderCount}
@@ -171,7 +170,7 @@ const ServiceImageContent: FC = () => {
                     {
                         images.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <div className="w-38 lg:w-full md:w-full sm:w-full flex items-center mt-3">
+                                <div className="w-full lg:w-full md:w-full sm:w-full flex items-center mt-3 border">
                                     <div className="w-auto flex justif-center items-center" onClick={() => randomImage(index)}>
                                         <img src={item} className="rounded-lg cursor-pointer" alt="" />
                                     </div>
