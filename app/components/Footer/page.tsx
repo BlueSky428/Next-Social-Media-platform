@@ -1,10 +1,11 @@
 import { faFacebook, faInstagram, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { FC } from "react";
 
 const Footer: FC = () => {
     return (
-        <footer className="w-full">
+        <footer className="w-full bg-white border-t-2">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-8 py-10 max-w-xs mx-auto sm:max-w-2xl lg:max-w-full">
                     <div className="col-span-full lg:mb-10 max-lg:border-b max-lg:pb-8 lg:border-r border-gray-200 lg:col-span-2 lg:max-w-xs lg:mb-0">
@@ -45,7 +46,7 @@ const Footer: FC = () => {
                     <div className="lg:mx-auto text-left ">
                         <h4 className="text-lg text-gray-900 font-medium mb-7">Tools & Resources</h4>
                         <ul className="text-sm  transition-all duration-500">
-                            <li className="mb-6"><a href="/" className="text-gray-600 hover:text-gray-900">Instagram Video Downloader</a></li>
+                            <li className="mb-6"><Link href="/Instagram" className="text-gray-600 hover:text-gray-900">Instagram Video Downloader</Link></li>
                             <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Instagram Profile Picture Viewer</a></li>
                             <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Instagram Story Downloader</a></li>
                             <li ><a href="/" className=" text-gray-600 hover:text-gray-900">Instagram Followers Counter</a></li>

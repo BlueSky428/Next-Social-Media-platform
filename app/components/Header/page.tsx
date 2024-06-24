@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 
@@ -21,9 +22,9 @@ const Header: FC = () => {
             <div className="w-full text-gray-700 bg-white dark:text-black dark:bg-white-900">
                 <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                     <div className="flex flex-row items-center justify-between p-4">
-                        <a href="#" className="text-lg font-semibold tracking-widest text-black uppercase rounded-lg dark:text-black focus:outline-none focus:shadow-outline">
+                        <Link href="/Dashboard" className="text-lg font-semibold tracking-widest text-black uppercase rounded-lg dark:text-black focus:outline-none focus:shadow-outline">
                             <img className="w-36" src="/image/Logo.png" alt="" />
-                        </a>
+                        </Link>
                         <button
                             className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
                             onClick={() => setOpen(!open)}
