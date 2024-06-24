@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const ServiceHeader: FC = () => {
     return (
-        <div className="lg:w-full items-center lg:py-12 md:py-12 sm-py-12 py-20 lg:px-24 px-1 mt-4">
+        <div className="lg:w-full items-center lg:py-4 md:py-12 sm-py-12 lg:px-24 px-1 lg:mt-0 md:mt-0 md:py-0 md:mt-8 sm:mt-6 mt-20">
             <div className="flex items-center">
                 <h1 className="font-bold text-2xl">Full Service host that will do most of the work for you</h1>
             </div>

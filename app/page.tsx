@@ -1,9 +1,11 @@
 "use client"
-import Index from "@/app/pages"
-import Router from "@/app/routes";
+import Index from "./(public)/page";
+
 
 export default function Home() {
   return (
-    <Router />
+    <>
+      <Index />
+    </>
   );
 }

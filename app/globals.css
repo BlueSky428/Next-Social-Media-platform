@@ -41,3 +41,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #7455ff;
 }
+
+/* styles/StarRating.module.css */
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 2rem;
+  color: #d3d3d3;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: gold;
+}

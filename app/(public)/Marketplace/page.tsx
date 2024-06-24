@@ -1,3 +1,4 @@
+"use client"
 import { FC } from "react";
 import FirstComponent from "@/app/components/MarketplaceComponent/firstComponent";
 import SecondComponent from "@/app/components/MarketplaceComponent/secondComponent";

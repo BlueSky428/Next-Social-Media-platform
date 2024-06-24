@@ -15,7 +15,7 @@ const Footer: FC = () => {
                             Trusted in more than 100 countries & 5 million customers. Follow us social media.
                         </div>
                         <div className="w-full flex justify-start items-center py-5">
-                            <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faInstagram} style={{ "color": "white" }} /></a>
+                            <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faInstagram} style={{ "color": "white", "width": "30px" }} /></a>
                             <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faFacebook} style={{ "color": "white" }} /></a>
                             <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faTiktok} style={{ "color": "white" }} /></a>
                             <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faYoutube} style={{ "color": "white" }} /></a>
@@ -61,7 +61,7 @@ const Footer: FC = () => {
                 </div>
                 <div className="py-7 border-t border-gray-200 flex justify-center items-center relative">
                     <div className="flex items-center justify-center lg:absolute lg:left-0 md:absolute md:left-0 sm:absolute sm:left-0">
-                        <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">Influencit.io</a> 2024, All rights reserved.
+                        <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">Influencity.io</a> 2024, All rights reserved.
                         </span>
                     </div>
                     <div className="flex justify-between items-center w-32 lg:absolute lg:right-0 md:absolute md:right-0 sm:absolute sm:right-0">

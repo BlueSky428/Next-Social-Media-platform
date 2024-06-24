@@ -1,8 +1,7 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons/faHeart";
-import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 
-type PopularServices = {
+type Relativeservice = {
     id: number,
     image: string,
     icon: any,
@@ -15,11 +14,9 @@ type PopularServices = {
     money: string
 }
 
-const Marketplace: FC = () => {
+const RelativeService: FC = () => {
 
-    const router = useRouter();
-
-    const [popularServices, setPopularServices] = useState<PopularServices[]>(
+    const [popularServices, setPopularServices] = useState<Relativeservice[]>(
         [
             {
                 id: 0,
@@ -68,117 +65,25 @@ const Marketplace: FC = () => {
                 userAvatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/9-150x150.jpg",
                 userName: "Freelancer",
                 money: "$158"
-            },
-            {
-                id: 4,
-                image: "/image/img/4.jpg",
-                icon: faHeart,
-                title: "Design & Creative",
-                content: "Developer drop the framework folder into new parent",
-                reviewMark: 5,
-                reviewCount: 2,
-                userAvatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-                userName: "John Powell",
-                money: "$158"
-            },
-            {
-                id: 5,
-                image: "/image/img/5.jpg",
-                icon: faHeart,
-                title: "Design & Creative",
-                content: "Full Service host that will do most of the work for you",
-                reviewMark: 3.0,
-                reviewCount: 1,
-                userAvatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-                userName: "John Powell",
-                money: "$158"
-            },
-            {
-                id: 6,
-                image: "/image/img/6.jpg",
-                icon: faHeart,
-                title: "Design & Creative",
-                content: "PHP framework taht you can use to create your own custom",
-                reviewMark: 4.0,
-                reviewCount: 1,
-                userAvatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/09/bg-video-150x150.png",
-                userName: "Ali Tufan",
-                money: "$158"
-            },
-            {
-                id: 7,
-                image: "/image/img/7.jpg",
-                icon: faHeart,
-                title: "Design & Creative",
-                content: "Power management, notification and geofencing for host serve",
-                reviewMark: 5,
-                reviewCount: 1,
-                userAvatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-                userName: "John Powell",
-                money: "$125"
             }
         ]
     )
 
-    const Service = () => {
-        router.push("/Service");
-    }
-
     return (
-        <div className="mx-auto max-w-screen-xl px-4 w-full justify-center mt-16">
+        <div className="mx-full max-w-screen-xl px-4 w-full justify-center mt-16">
             <div className="lg:flex items-center justify-between mb-5">
-                <h2 className="font-bold text-2xl text-gray-600">Popular Services</h2>
-                <div className="lg:px-7 bg-white shadow-lg rounded-2xl ">
-                    <div className="flex">
-                        <div className="flex-1 group">
-                            <a href="#" className="flex items-end justify-center text-center mx-auto lg:px-4 pt-2 w-full text-gray-400 group-hover:text-indigo-500">
-                                <span className="block px-1 pt-1 pb-1">
-                                    <i className="far fa-home text-2xl pt-1 mb-1 block"></i>
-                                    <span className="block text-xs pb-2">Design</span>
-                                    <span className="block w-5 mx-auto h-1 group-hover:bg-indigo-500 rounded-full"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div className="flex-1 group">
-                            <a href="#" className="flex items-end justify-center text-center mx-auto lg:px-4 pt-2 w-full text-gray-400 group-hover:text-indigo-500">
-                                <span className="block px-1 pt-1 pb-1">
-                                    <i className="far fa-compass text-2xl pt-1 mb-1 block"></i>
-                                    <span className="block text-xs pb-2">Development</span>
-                                    <span className="block w-5 mx-auto h-1 group-hover:bg-indigo-500 rounded-full"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div className="flex-1 group">
-                            <a href="#" className="flex items-end justify-center text-center mx-auto lg:px-4 pt-2 w-full text-gray-400 group-hover:text-indigo-500">
-                                <span className="block px-1 pt-1 pb-1">
-                                    <i className="far fa-search text-2xl pt-1 mb-1 block"></i>
-                                    <span className="block text-xs pb-2">Digital</span>
-                                    <span className="block w-5 mx-auto h-1 group-hover:bg-indigo-500 rounded-full"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div className="flex-1 group">
-                            <a href="#" className="flex items-end justify-center text-center mx-auto lg:px-4 pt-2 w-full text-gray-400 group-hover:text-indigo-500">
-                                <span className="block px-1 pt-1 pb-1">
-                                    <i className="far fa-cog text-2xl pt-1 mb-1 block"></i>
-                                    <span className="block text-xs pb-2">Transition</span>
-                                    <span className="block w-5 mx-auto h-1 group-hover:bg-indigo-500 rounded-full"></span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <h2 className="font-bold text-2xl text-gray-600">Relative Services</h2>
             </div>
             <div className="grid w-full md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4 gap-6 flex justify-center">
                 {
                     popularServices.map((item) => (
-                        <div key={item.id} onClick={Service} className="cursor-pointer relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
-                            <span className="hover:text-orange-600 text-red-600 absolute z-30 top-2 right-0 mt-2 mr-3">
+                        <div key={item.id} className="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-sm">
+                            <a href="" className="hover:text-orange-600 text-red-600 absolute z-30 top-2 right-0 mt-2 mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                                 </svg>
-                            </span>
-                            <span className="z-20 absolute h-full w-full top-0 left-0 ">&nbsp;</span>
+                            </a>
+                            <a href="" className="z-20 absolute h-full w-full top-0 left-0 ">&nbsp;</a>
                             <div className="h-auto overflow-hidden">
                                 <div className="h-auto overflow-hidden relative">
                                     <img src={item.image} className="w-full y-full" alt="" />
@@ -237,4 +142,4 @@ const Marketplace: FC = () => {
     )
 }
 
-export default Marketplace;
+export default RelativeService;

@@ -1,14 +1,21 @@
+"use client"
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 const Login: FC = () => {
+    const router = useRouter();
 
     const Login = () => {
-        window.location.href = "/Checkout"
+        router.push("/Dashboard");
+    }
+
+    const Register = () => {
+        router.push("/Register");
     }
 
     return (
         <div className="min-h-screen bg-white text-gray-900 flex justify-center">
-            <div className="max-w-screen-xl bg-white shadow sm:rounded-lg flex justify-center flex-1">
+            <div className="max-w-screen-xl bg-white shadow sm:rounded-lg flex justify-center flex-1 mt-12">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                     <div className="flex flex-col items-center">
                         <h1 className="text-2xl xl:text-3xl font-extrabold">
@@ -132,7 +139,7 @@ const Login: FC = () => {
                                         Login
                                     </span>
                                 </button>
-                                <button
+                                <button onClick={() => (Register())}
                                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                                 >
                                     <p>Not Registed?</p>

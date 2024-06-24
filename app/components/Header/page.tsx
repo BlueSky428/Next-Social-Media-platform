@@ -1,11 +1,19 @@
 "use client"
+import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 
 const Header: FC = () => {
     const [open, setOpen] = useState(false);
+    const router = useRouter();
 
     const Go_To_MarketPage = (item: string) => {
-        window.location.href = "/Marketplace"
+        if (item === "My Account") {
+            router.push("/Login");
+        } else if (item === "Market Place") {
+            router.push("/Marketplace");
+        } else if (item === "Home") {
+            router.push("/Dashboard");
+        }
     }
 
     return (
@@ -14,7 +22,7 @@ const Header: FC = () => {
                 <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                     <div className="flex flex-row items-center justify-between p-4">
                         <a href="#" className="text-lg font-semibold tracking-widest text-black uppercase rounded-lg dark:text-black focus:outline-none focus:shadow-outline">
-                            <img className="w-36" src="/image/logo.png" alt="" />
+                            <img className="w-36" src="/image/Logo.png" alt="" />
                         </a>
                         <button
                             className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
@@ -37,9 +45,9 @@ const Header: FC = () => {
                         </button>
                     </div>
                     <nav className={`flex-col flex-grow ${open ? 'flex' : 'hidden'} pb-4 md:pb-0 md:flex md:justify-end md:flex-row`}>
-                        {['Home', 'FAQ', 'Blog', 'Contact', 'My Account'].map((item) => (
+                        {['Home', 'FAQ', 'Blog', 'Contact', 'Market Place', 'My Account'].map((item) => (
                             <a key={item} onClick={() => Go_To_MarketPage(item)}
-                                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg dark:bg-transparent dark:hover:bg-[#581C87] dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 hover:text-white-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                className="cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg dark:bg-transparent dark:hover:bg-[#581C87] dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 hover:text-white-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                             >
                                 {item}
                             </a>

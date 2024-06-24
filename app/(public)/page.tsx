@@ -1,10 +1,10 @@
 import { FC } from "react";
-import Dashboard from "./Dashboard";
+import Login from "./Login/page";
 
 const Index: FC = () => {
     return (
         <>
-            <Dashboard />
+            <Login />
         </>
     )
 }

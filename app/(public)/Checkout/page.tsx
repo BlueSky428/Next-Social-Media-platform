@@ -2,7 +2,7 @@
 import { FC, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle, faInstagram, faSoundcloud, faSpotify, faTiktok, faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faEye, faHeart, faL, faPlay, faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faHeart, faPlay, faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 type CateogoryButton = {
     id: number,

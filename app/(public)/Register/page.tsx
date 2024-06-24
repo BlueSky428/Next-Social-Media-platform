@@ -1,6 +1,14 @@
+"use client"
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 const Register: FC = () => {
+
+    const router = useRouter();
+
+    const Login = () => {
+        router.push("/Login");
+    }
 
     return (
         <div className="min-h-screen bg-white text-gray-900 flex justify-center">
@@ -153,7 +161,7 @@ const Register: FC = () => {
                                         Register
                                     </span>
                                 </button>
-                                <button className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <button onClick={Login} className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <p>Already Registed?</p>
                                     <span className="ml-3">
                                         Login Now
