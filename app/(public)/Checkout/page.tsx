@@ -1,9 +1,12 @@
 "use client"
+import SelectPackage from "@/app/components/Checkout/selectPaymentWay"
 import { FC } from "react"
 
 const CheckOut: FC = () => {
     return (
-        <div>1</div>
+        <div className="w-full flex justify-cetner items-center bg-white">
+            <SelectPackage />
+        </div>
     )
 }
 

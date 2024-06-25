@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle, faInstagram, faSoundcloud, faSpotify, faTiktok, faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faHeart, faPlay, faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 type CateogoryButton = {
     id: number,
@@ -86,6 +87,8 @@ const MainDashboardComponent: FC = () => {
     const [oldPrice, setOldPrice] = useState<number>(8.68);
     const [buyItemDetailState, setButItemDetailState] = useState<boolean>(false);
     const [instgramState, setInstagramState] = useState<boolean>(false);
+
+    const router = useRouter();
 
     //useState Category Button Button Data
     const [categorybutton, setButton] = useState<CateogoryButton[]>(
@@ -1016,7 +1019,7 @@ const MainDashboardComponent: FC = () => {
                                         </div>
                                     </div>
                                     <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative">
-                                        <button type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-[#581C87]`}>
+                                        <button onClick={() => router.push("/Checkout")} type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-[#581C87]`}>
                                             <span className="ml-0.5 text-white">Buy Now</span>
                                         </button>
                                     </div>
