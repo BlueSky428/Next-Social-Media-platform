@@ -60,13 +60,15 @@ const Footer: FC = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="py-7 border-t border-gray-200 flex justify-center items-center relative">
+                <div className="py-7 border-t border-gray-200 flex lg:flex-row md:flex-row sm:flex-row flex-col justify-center items-center relative">
                     <div className="flex items-center justify-center lg:absolute lg:left-0 md:absolute md:left-0 sm:absolute sm:left-0">
                         <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">Influencity.io</a> 2024, All rights reserved.
                         </span>
                     </div>
-                    <div className="flex justify-between items-center w-32 lg:absolute lg:right-0 md:absolute md:right-0 sm:absolute sm:right-0">
+                    <div className="flex justify-between items-center lg:w-32 md:w-32 sm:w-32 w-32 lg:flex-row md:flex-row sm:flex-row flex-row
+                     lg:absolute lg:right-0 md:absolute md:right-0 sm:absolute sm:right-0 lg:mt-0 md:mt-0 sm:mt-0 mt-2">
                         <a className="cursor-pointer text-black text-sm">Terms</a>
+                        <span className="lg:hidden md:hidden sm:hidden flex">/</span>
                         <a className="cursor-pointer text-black text-sm">Privacy</a>
                     </div>
                 </div>

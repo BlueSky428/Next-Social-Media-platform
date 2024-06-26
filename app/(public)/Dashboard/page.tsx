@@ -11,14 +11,16 @@ import serviceContext from "@/app/services/serviceContext";
 const Dashboard: FC = () => {
 
     const statusContext = useContext(serviceContext);
-
+    const divide = "/";
     const [serviceTitle, setServiceTitle] = useState<string>('Instagram');
     const [serviceContent, setServiceContent] = useState<string>("Followers");
 
     useEffect(() => {
         if (statusContext?.serviceStatus) {
-            setServiceTitle(statusContext?.serviceTitle);
-            setServiceContent(statusContext?.serviceStatus);
+            // setServiceTitle(statusContext?.serviceTitle);
+            let parts = (statusContext?.serviceStatus).split("-");
+            setServiceTitle(parts[0]);
+            setServiceContent(parts[1]);
         }
     }, [statusContext?.serviceStatus])
 

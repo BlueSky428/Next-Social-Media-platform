@@ -50,7 +50,7 @@ const AboutSeller: FC = () => {
                         </p> */}
 
                         <div className="flex items-center mt-4 text-gray-600">
-                            <div className="flex w-full items-center border">
+                            <div className="flex w-full items-center">
                                 <div className="">
 
                                 </div>

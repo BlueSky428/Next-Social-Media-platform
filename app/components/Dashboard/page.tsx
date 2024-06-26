@@ -471,7 +471,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                         <div className="relative">
                                             <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 px-6 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
                                                 <span className={`font-bold ${item.Active ? "text-white" : "text-black"}`}>{item.Count}</span>
-                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{contentTitle}</span>
+                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{item.Type === "Followers" ? contentTitle : item.Type}</span>
                                             </button>
                                             <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
                                                 style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "right": "-13px" }}>

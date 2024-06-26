@@ -147,7 +147,7 @@ const InputComponent: FC<Type> = ({ type }) => {
     }
 
     return (
-        <div className="w-full flex flex-col justify-center items-center lg:mt-4 md:mt-0 sm:mt-0 mt-28 ">
+        <div className="w-full flex flex-col justify-center items-center lg:mt-4 md:mt-0 sm:mt-0 mt-2 ">
             {renderContent()}
         </div>
     )

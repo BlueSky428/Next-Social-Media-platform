@@ -183,8 +183,8 @@ const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
         setList(false);
         setDropdown(false);
         localStorage.setItem('servicesStatus', instagram[id].content);
-        servicesContext?.setServices(instagram[id].content);
-        servicesContext?.setServicesTitle("Instagram");
+        servicesContext?.setServices("Instagram" + "-" + instagram[id].content);
+        // servicesContext?.setServicesTitle("Instagram");
         router.push("/Dashboard");
     }
 
@@ -193,8 +193,8 @@ const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
         setList(false);
         setDropdown(false);
         localStorage.setItem('servicesStatus', facebook[id].content);
-        servicesContext?.setServices(facebook[id].content);
-        servicesContext?.setServicesTitle("FaceBook");
+        servicesContext?.setServices("FaceBook" + "-" + facebook[id].content);
+        // servicesContext?.setServicesTitle("FaceBook");
         router.push("/Dashboard");
     }
 
@@ -203,7 +203,7 @@ const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
         setList(false);
         setDropdown(false);
         localStorage.setItem('servicesStatus', tiktok[id].content);
-        servicesContext?.setServices(tiktok[id].content);
+        servicesContext?.setServices("TikTok" + "-" + tiktok[id].content);
         servicesContext?.setServicesTitle("TikTok");
         router.push("/Dashboard");
     }
@@ -213,8 +213,8 @@ const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
         setList(false);
         setDropdown(false);
         localStorage.setItem('servicesStatus', youtube[id].content);
-        servicesContext?.setServices(youtube[id].content);
-        servicesContext?.setServicesTitle("Youtube");
+        servicesContext?.setServices("Youtube" + "-" + youtube[id].content);
+        // servicesContext?.setServicesTitle("Youtube");
         router.push("/Dashboard");
     }
 
@@ -238,20 +238,32 @@ const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
                         </button>
                     </div>
                     <nav className={`flex-col flex-grow ${open ? 'flex' : 'hidden'} md:w-full pb-4 md:pb-0 lg:flex lg:justify-end lg:flex-row`}>
-                        <div className="relative inline-block text-left">
-                            <div className="group flex justify-center">
-                                <a className="cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg 
-                                    dark:bg-transparent dark:hover:bg-[#581C87] dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white 
+                        <a onClick={() => Go_To_MarketPage("Home")}
+                            className="cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg 
+                                        dark:hover:bg-[#581C87] transition duration-300 dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 
+                                        hover:text-white-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                            Home
+                        </a>
+                        <div className="relative">
+                            <div className="flex">
+                                {/* <a className="cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg 
+                                    dark:bg-transparent dark:hover:bg-[#581C87] 
                                     dark:text-black md:mt-0 md:ml-4 hover:text-white-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 
                                     transition duration-300 focus:outline-none focus:shadow-outline inline-flex 
                                     items-center w-full px-4 py-2 text-sm font-medium text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:bg-gray-700" onClick={() => setDropdown(!dropdown)}>
                                     Services
+                                </a> */}
+                                <a onClick={() => setDropdown(!dropdown)}
+                                    className="w-full cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg 
+                                        dark:hover:bg-[#581C87] transition duration-300 dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 
+                                        hover:text-white-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                                    Services
                                 </a>
                                 <div className={`absolute top-0 mt-8 flex justify-center h-4 w-full ${dropdown ? "" : "hidden"}`}>
-                                    <div className="absolute absolute top-4 w-auto bg-white divide-y divide-gray-100 rounded-md sm:rounded border shadow-xl
-                                                    shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition
+                                    <div className={`absolute absolute top-4 w-auto bg-white divide-y divide-gray-100 rounded-md sm:rounded border shadow-xl
+                                                    shadow-lg opacity-100 transition ${dropdown ? "opacity-100" : "opacity-0 "}
                                                     duration-300 flex justify-center lg:flex-row md:flex-row sm:flex-col flex-col
-                                                    lg:w-auto md:w-auto sm:w-full w-full">
+                                                    lg:w-auto md:w-auto sm:w-full w-full`}>
                                         <div className="lg:w-auto md:w-auto sm:w-full flex flex-col justify-cetner items-center px-2 py-2">
                                             <div className="lg:w-auto md:w-auto sm:w-full w-full flex justify-cetner items-center lg:px-8 lg:py-2 md:px-8 md:py-2 sm:px-2 sm:py-4 
                                                             px-2 py-4 cursor-pointer border-b-2" onClick={() => handleContent(1)}>
@@ -324,7 +336,8 @@ const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
                                 </div>
                             </div>
                         </div>
-                        {['Home', 'FAQ', 'Blog', 'Contact', 'Market Place', 'My Account'].map((item) => (
+
+                        {['FAQ', 'Blog', 'Contact', 'Market Place', 'My Account'].map((item) => (
                             <a key={item} onClick={() => Go_To_MarketPage(item)}
                                 className="cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg 
                                         dark:hover:bg-[#581C87] transition duration-300 dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 

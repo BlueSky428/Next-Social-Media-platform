@@ -30,13 +30,13 @@ const CategoryButton: FC<CategoryButtonProps> = ({ setContent }) => {
 
     return (
         <div className="flex w-full justify-center items-center mt-4 px-2">
-            <div className="w-[40%] flex justify-between items-center gap-2">
+            <div className="w-auto flex justify-between items-center gap-2 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-4 grid-cols-2">
                 {categoryButtonTypes.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => categoryButtonClick(item.id)}
-                        className={`w-[47%] hover:shadow-form rounded-md ${item.active ? "bg-[#581C87] text-white" : "bg-white border border-[#581C87] text-[#581C87]"
-                            } text-center py-3 text-xs outline-none flex justify-center items-center`}
+                        className={`w-auto hover:shadow-form rounded-md ${item.active ? "bg-[#581C87] text-white" : "bg-white border border-[#581C87] text-[#581C87]"
+                            } text-center lg:px-2 md:px-2 sm:px-2 px-2 py-3 text-xs outline-none flex justify-center items-center`}
                     >
                         {item.content}
                     </button>
