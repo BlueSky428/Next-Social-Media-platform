@@ -8,6 +8,7 @@ import ServiceFAQ from "@/app/components/Service/serviceFAQ"
 import ServiceReview from "@/app/components/Service/serviceReview"
 import PostingReview from "@/app/components/Service/postingReview"
 import Navigate from "@/app/components/Service/navigate"
+import AboutSeller from "@/app/components/Service/aboutSeller"
 
 const Service: FC = () => {
 
@@ -19,6 +20,7 @@ const Service: FC = () => {
             <ServiceImageContent />
             <ServiceDescription />
             <ServiceFAQ />
+            <AboutSeller />
             <ServiceReview />
             <PostingReview />
         </div>

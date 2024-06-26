@@ -1,23 +1,6 @@
 "use client"
 import { FC, useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faGoogle, faInstagram, faSoundcloud, faSpotify, faTiktok, faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faEye, faHeart, faPlay, faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
-
-type CateogoryButton = {
-    id: number,
-    title: string,
-    icon: any,
-    state: boolean
-}
-
-type ContentButton = {
-    id: number,
-    title: string,
-    icon: any,
-    parentID: number
-}
 
 type HighQuality = {
     id: number,
@@ -76,41 +59,23 @@ type InstagramAutoLike = {
     active: boolean
 }
 
-const MainDashboardComponent: FC = () => {
+type Services = {
+    Title?: string,
+    Content?: string
+}
+
+const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
     const [buyMode, setBuyMode] = useState<boolean>(false);
     const [showModal, setShowModal] = useState(false);
     const [title, setTitle] = useState<string>("High Quality");
-    const [category, setCategory] = useState<string>("Instagram");
-    const [contentTitle, setContentTitle] = useState<string>("Followers");
+    const [category, setCategory] = useState<string | undefined>(Title);
+    const [contentTitle, setContentTitle] = useState<string | undefined>(Content);
     const [animate, setAnimate] = useState(false);
     const [newPrice, setNewPrice] = useState<number>(4.34);
     const [oldPrice, setOldPrice] = useState<number>(8.68);
     const [buyItemDetailState, setButItemDetailState] = useState<boolean>(false);
-    const [instgramState, setInstagramState] = useState<boolean>(false);
 
     const router = useRouter();
-
-    //useState Category Button Button Data
-    const [categorybutton, setButton] = useState<CateogoryButton[]>(
-        [
-            { id: 0, title: "Instagram", icon: faInstagram, state: true },
-            { id: 1, title: "Facebook", icon: faFacebook, state: false },
-            { id: 2, title: "TikTok", icon: faTiktok, state: false },
-            { id: 3, title: "Youtube", icon: faYoutube, state: false },
-            { id: 4, title: "Spotify", icon: faSpotify, state: false },
-            { id: 5, title: "Soundcloud", icon: faSoundcloud, state: false },
-            { id: 6, title: "Twitch", icon: faTwitch, state: false },
-            { id: 7, title: "Google", icon: faGoogle, state: false }
-        ]
-    )
-
-    //global Content Button Data
-    const _contentButton: ContentButton[] = [
-        { id: 0, title: "Followers", icon: faUsers, parentID: -1 },
-        { id: 1, title: "Views", icon: faEye, parentID: -1 },
-        { id: 2, title: "Likes", icon: faHeart, parentID: -1 },
-        { id: 3, title: "Auto Likes", icon: faHeart, parentID: -1 },
-    ]
 
     //High Quality followers
     const [highQuality, setHighQuality] = useState<HighQuality[]>(
@@ -156,16 +121,6 @@ const MainDashboardComponent: FC = () => {
         ]
     )
 
-    //useState Content Button Data
-    const [contentbutton, setContentButton] = useState<ContentButton[]>(
-        [
-            { id: 0, title: "Followers", icon: faUsers, parentID: 0 },
-            { id: 1, title: "Views", icon: faEye, parentID: 0 },
-            { id: 2, title: "Likes", icon: faHeart, parentID: 0 },
-            { id: 3, title: "Auto Likes", icon: faHeart, parentID: 0 },
-        ]
-    )
-
     //Buy Detail
     const [buyItemDetail, setBuyItemDetail] = useState<BuyDetail[]>(
         [
@@ -200,216 +155,6 @@ const MainDashboardComponent: FC = () => {
             { id: 1, title: "30 Day subscription", content: "Manual Renewal", active: true },
         ]
     )
-
-    //Category Button
-    const handleButtonPress = (id: number) => {
-        const ButtonTemp = [];
-        const ContentButtonTemp = [];
-
-        if (id === 0 || id === 1) { //Instagram Click and Facebook Click
-            if (id === 0) {
-                setCategory("Instagram");
-                const FollowersHighQuality = [
-                    { id: 0, Count: 100, Type: "Followers", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-                ]
-                setBuyItems(FollowersHighQuality);
-            }
-            else {
-                setCategory("Facebook");
-                const FollowersHighQuality = [
-                    { id: 0, Count: 100, Type: "Followers", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                    { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-                ]
-                setBuyItems(FollowersHighQuality);
-            }
-            setContentTitle("Followers");
-            for (let i = 0; i < 4; i++) {
-                ContentButtonTemp.push(
-                    {
-                        id: i,
-                        title: _contentButton[i].title,
-                        icon: _contentButton[i].icon,
-                        parentID: _contentButton[i].id
-                    }
-                )
-            }
-        } else if (id === 2 || id === 3) { //TikTok Click and Youtube Ckick
-            if (id === 2) setCategory("TikTok");
-            else setCategory("Youtube");
-            setContentTitle("Followers");
-
-            for (let i = 0; i < 3; i++) {
-                ContentButtonTemp.push(
-                    {
-                        id: i,
-                        title: _contentButton[i].title,
-                        icon: _contentButton[i].icon,
-                        parentID: _contentButton[i].id
-                    }
-                )
-            }
-        } else if (id === 4 || id === 5) { //Spotify Click and Soundcloud Click
-            if (id === 4) setCategory("Spotify");
-            else setCategory("Soundcloud");
-            setContentTitle("Followers");
-            for (let i = 0; i < 2; i++) {
-                ContentButtonTemp.push(
-                    {
-                        id: i,
-                        title: i === 0 ? _contentButton[i].title : "Plays",
-                        icon: i === 0 ? _contentButton[i].icon : faPlay,
-                        parentID: _contentButton[i].id
-                    }
-                )
-            }
-        } else if (id === 6) { //Twitch Click
-            setCategory("Twitch");
-            setContentTitle("Followers");
-            for (let i = 0; i < 2; i++) {
-                ContentButtonTemp.push(
-                    {
-                        id: i,
-                        title: _contentButton[i].title,
-                        icon: _contentButton[i].icon,
-                        parentID: _contentButton[i].id
-                    }
-                )
-            }
-        } else if (id === 7) { //Google Click
-            setCategory("Google");
-            setContentTitle("Reviews");
-            ContentButtonTemp.push(
-                {
-                    id: 0,
-                    title: "Reviews",
-                    icon: faStar,
-                    parentID: id
-                }
-            )
-        }
-
-        for (let i = 0; i < categorybutton.length; i++) {
-            if (i === id) {
-                if (categorybutton[i].state === false) {
-                    ButtonTemp.push(
-                        {
-                            id: i,
-                            title: categorybutton[i].title,
-                            icon: categorybutton[i].icon,
-                            state: true
-                        }
-                    )
-                } else {
-                    ButtonTemp.push(
-                        {
-                            id: i,
-                            title: categorybutton[i].title,
-                            icon: categorybutton[i].icon,
-                            state: categorybutton[i].state
-                        }
-                    )
-                }
-            } else {
-                ButtonTemp.push(
-                    {
-                        id: i,
-                        title: categorybutton[i].title,
-                        icon: categorybutton[i].icon,
-                        state: false
-                    }
-                )
-            }
-        }
-        setButton(ButtonTemp);
-        setContentButton(ContentButtonTemp);
-    }
-
-    //Content Title
-    const handleContentTitlePress = (id: number) => {
-        if (id === 0) {
-            setButItemDetailState(false);
-            if (category === "Google") setContentTitle("Reviews");
-            else setContentTitle("Followers")
-            setInstagramState(false)
-
-            const FollowersHighQuality = [
-                { id: 0, Count: 100, Type: "Followers", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-            ]
-            setBuyItems(FollowersHighQuality);
-        }
-        else if (id === 1) {
-            setButItemDetailState(true);
-            if (category === "Soundcloud" || category === "Spotify") setContentTitle("Plays");
-            else setContentTitle("Views");
-            setInstagramState(false)
-
-            const FollowersHighQuality = [
-                { id: 0, Count: 100, Type: "Views", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-            ]
-            setBuyItems(FollowersHighQuality);
-        }
-        else if (id === 2) {
-            setButItemDetailState(true);
-            setContentTitle("Likes");
-            setInstagramState(false)
-
-            const FollowersHighQuality = [
-                { id: 0, Count: 100, Type: "Likes", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-            ]
-            setBuyItems(FollowersHighQuality);
-        }
-        else if (id === 3) {
-            setButItemDetailState(true);
-            setContentTitle("AutoLikes");
-            if (category === "Instagram") setInstagramState(true)
-
-            const FollowersHighQuality = [
-                { id: 0, Count: 100, Type: "AutoLikes", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-                { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-            ]
-            setBuyItems(FollowersHighQuality);
-        }
-    }
 
     //Change Buy Mode
     const ChangeBuyModePress = (state: boolean) => {
@@ -534,59 +279,11 @@ const MainDashboardComponent: FC = () => {
                     ]
                     setActive(activeLikesTemp);
                 }
-            } else if (category === "Spotify" || category === "Soundcloud") { //Spotify and Soundcloud Click
-                if (contentTitle === "Followers") {
-                    const activeFollowersTemp = [
-                        { id: 0, content: "Real Active followers" },
-                        { id: 1, content: "Guaranteed Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(activeFollowersTemp);
-                } else if (contentTitle === "Plays") {
-                    const activeViewsTemp = [
-                        { id: 0, content: "Real Active plays" },
-                        { id: 1, content: "Guaranteed Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(activeViewsTemp);
-                }
-            } else if (category === "Twitch") { //Twitch Click
-                if (contentTitle === "Followers") {
-                    const activeFollowersTemp = [
-                        { id: 0, content: "Real Active followers" },
-                        { id: 1, content: "Guaranteed Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(activeFollowersTemp);
-                } else if (contentTitle === "Views") {
-                    const activeViewsTemp = [
-                        { id: 0, content: "Real Active views" },
-                        { id: 1, content: "Guaranteed Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(activeViewsTemp);
-                }
-            } else if (category === "Google") { //Google Click
-                if (contentTitle === "Reviews") {
-                    const activeFollowersTemp = [
-                        { id: 0, content: "Real Active reviews" },
-                        { id: 1, content: "Guaranteed Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                        { id: 4, content: "30 days refill" },
-                    ]
-                    setActive(activeFollowersTemp);
-                }
             }
         }
         else {
             setBuyMode(false);
             setTitle("High Quality");
-
             if (category === "Instagram") { //Instagram Click
                 if (contentTitle === "Followers") {
                     const highQualityFollowersTemp = [
@@ -710,53 +407,6 @@ const MainDashboardComponent: FC = () => {
                     ]
                     setActive(highQualityLikesTemp);
                 }
-            } else if (category === "Spotify" || category === "Soundcloud") { //Spotify Click
-                if (contentTitle === "Followers") {
-                    const highQualityFollowersTemp = [
-                        { id: 0, content: "High quality followers" },
-                        { id: 1, content: "Fast Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(highQualityFollowersTemp);
-                } else if (contentTitle === "Plays") {
-                    const highQualityViewsTemp = [
-                        { id: 0, content: "High quality plays" },
-                        { id: 1, content: "Fast Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(highQualityViewsTemp);
-                }
-            } else if (category === "Twitch") { //Twitch Click
-                if (contentTitle === "Followers") {
-                    const highQualityFollowersTemp = [
-                        { id: 0, content: "High quality followers" },
-                        { id: 1, content: "Fast Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(highQualityFollowersTemp);
-                } else if (contentTitle === "Plays") {
-                    const highQualityViewsTemp = [
-                        { id: 0, content: "High quality views" },
-                        { id: 1, content: "Fast Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                    ]
-                    setActive(highQualityViewsTemp);
-                }
-            } else if (category === "Google") { //Google Click
-                if (contentTitle === "Reviews") {
-                    const highQualityFollowersTemp = [
-                        { id: 0, content: "High quality reviews" },
-                        { id: 1, content: "Fast Delivery" },
-                        { id: 2, content: "No password required" },
-                        { id: 3, content: "24/7 support" },
-                        { id: 4, content: "30 days refill" },
-                    ]
-                    setActive(highQualityFollowersTemp);
-                }
             }
         }
     }
@@ -765,98 +415,23 @@ const MainDashboardComponent: FC = () => {
     const handleBuyItemPress = (id: number) => {
         setNewPrice(buyItems[id].NewPrice);
         setOldPrice(buyItems[id].OldPrice);
-        const buyItemsTemp = [];
 
-        for (let i = 0; i < buyItems.length; i++) {
-            if (i === id) {
-                if (buyItems[i].Active) {
-                    buyItemsTemp.push(
-                        {
-                            id: i,
-                            Count: buyItems[i].Count,
-                            Type: buyItems[i].Type,
-                            OldPrice: buyItems[i].OldPrice,
-                            NewPrice: buyItems[i].NewPrice,
-                            Active: buyItems[i].Active,
-                            parentID: buyItems[i].id,
-                            BestSelling: buyItems[i].BestSelling,
-                            PlusButton: buyItems[i].PlusButton
-                        }
-                    )
-                } else {
-                    buyItemsTemp.push(
-                        {
-                            id: i,
-                            Count: buyItems[i].Count,
-                            Type: buyItems[i].Type,
-                            OldPrice: buyItems[i].OldPrice,
-                            NewPrice: buyItems[i].NewPrice,
-                            Active: true,
-                            parentID: buyItems[i].id,
-                            BestSelling: buyItems[i].BestSelling,
-                            PlusButton: buyItems[i].PlusButton
-                        }
-                    )
-                }
-            } else {
-                buyItemsTemp.push(
-                    {
-                        id: i,
-                        Count: buyItems[i].Count,
-                        Type: buyItems[i].Type,
-                        OldPrice: buyItems[i].OldPrice,
-                        NewPrice: buyItems[i].NewPrice,
-                        Active: false,
-                        parentID: buyItems[i].id,
-                        BestSelling: buyItems[i].BestSelling,
-                        PlusButton: buyItems[i].PlusButton
-                    }
-                )
-            }
-        }
-        setBuyItems(buyItemsTemp);
+        const temp = buyItems.map((item) =>
+            item.id === id
+                ? { ...item, Active: true }
+                : { ...item, Active: false }
+        );
+        setBuyItems(temp);
     }
 
     const subscribeToNewsletter = () => {
         setShowModal(false);
     };
 
-    const instagramButtonParee = (index: number) => {
-        const instagramBtn = []
-        for (let i = 0; i < instagramAutoLikeBtn.length; i++) {
-            if (i === index) {
-                if (instagramAutoLikeBtn[i].active === true) {
-                    instagramBtn.push(
-                        {
-                            id: i,
-                            title: instagramAutoLikeBtn[i].title,
-                            content: instagramAutoLikeBtn[i].content,
-                            active: instagramAutoLikeBtn[i].active
-                        }
-                    )
-                } else {
-                    instagramBtn.push(
-                        {
-                            id: i,
-                            title: instagramAutoLikeBtn[i].title,
-                            content: instagramAutoLikeBtn[i].content,
-                            active: true
-                        }
-                    )
-                }
-            } else {
-                instagramBtn.push(
-                    {
-                        id: i,
-                        title: instagramAutoLikeBtn[i].title,
-                        content: instagramAutoLikeBtn[i].content,
-                        active: false
-                    }
-                )
-            }
-        }
-        setInstagramAutoLikeBtn(instagramBtn);
-    }
+    useEffect(() => {
+        setCategory(Title);
+        setContentTitle(Content);
+    }, [Title, Content])
 
     useEffect(() => {
         if (showModal) {
@@ -871,38 +446,6 @@ const MainDashboardComponent: FC = () => {
         <div className="bg-white text-gray-900 flex justify-center overflow-x-hidden">
             <div className="max-w-screen-xl bg-white sm:rounded-lg flex justify-center flex-1" style={{ "marginTop": "150px" }}>
                 <div className="w-full px-6 sm:px-12 flex flex-col items-center">
-                    <h1 className="text-2xl xl:text-3xl font-extrabold">Our Services</h1>
-                    <span className="text-sm text-center">The best place to grow your social media account.</span>
-                    <div className="card bg-white py-3 flex flex-col">
-                        <div className="w-full py-3 text-center">
-                            {
-                                categorybutton.map((item) => (
-                                    <div className="inline-block px-2 py-1" key={item.id}>
-                                        <button type="button" onClick={() => handleButtonPress(item.id)}
-                                            className={`focus:outline-none text-white text-sm py-2.5 px-4 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border duration-300 ${item.state ? "bg-[#581C87]" : "border-[#581C87]"}`}>
-                                            <FontAwesomeIcon icon={item.icon} color={item.state ? "white" : "#581C87"} style={{ "width": "15px", "height": "15px" }} />
-                                            <span className={`ml-0.5 ${item.state ? "text-white" : "text-[#581C87]"}`}>{item.title}</span>
-                                        </button>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-                    <div className="card bg-white py-3 flex flex-col">
-                        <div className="w-full py-3 text-center">
-                            {
-                                contentbutton.map((item) => (
-                                    <div className="inline-block px-2 py-1" key={item.id}>
-                                        <button type="button" onClick={() => handleContentTitlePress(item.id)}
-                                            className={`focus:outline-none text-white text-sm py-2.5 px-4 rounded-md hover:bg-[#581C87] hover:shadow-lg flex items-center border duration-300 bg-[#581C87]`}>
-                                            <FontAwesomeIcon icon={item.icon} color={"white"} style={{ "width": "15px", "height": "15px" }} />
-                                            <span className={`ml-0.5 text-white`}>{item.title}</span>
-                                        </button>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
                     <div className="card bg-white flex py-3 flex-col">
                         <div className="w-full text-center">
                             <div className="font-bold text-2xl xl:text-3xl lg:text-4xl md:text-4xl items-center text-black">Buy {category} {contentTitle}</div>
@@ -910,23 +453,6 @@ const MainDashboardComponent: FC = () => {
                                 At Influencity, you can buy Instagram followers quickly, safely,<br />
                                 and easily with just a few clicks. See our deals below!
                             </span>
-                            <div className="w-full py-3 text-center">
-                                {/* {
-                                    instgramState ? (
-                                        instagramAutoLikeBtn.map((item) => (
-                                            <div className="inline-block px-2 py-1" key={item.id}>
-                                                <button type="button" onClick={() => instagramButtonParee(item.id)}
-                                                    className={`focus:outline-none text-white text-sm py-2.5 px-4 rounded-md hover:opacity-80 hover:shadow-lg flex items-center flex-col border duration-300 shadow-slate-800 drop-shadow-2xl ${item.active ? "bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%" : "bg-white"}`}>
-                                                    <span className={`ml-0.5 text-sm ${item.active ? "text-white" : "text-green-600"}`}>{item.title}</span>
-                                                    <span className={`ml-0.5 text-sm ${item.active ? "text-white" : "text-green-600"}`}>{item.content}</span>
-                                                </button>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <div></div>
-                                    )
-                                } */}
-                            </div>
                         </div>
                         <div className="bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full inline-flex shadow-lg">
                             <button onClick={() => ChangeBuyModePress(false)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-l-full px-4 py-2 ${buyMode ? "bg-white text-[#581C87]" : "bg-[#581C87] text-white"}`}>
@@ -945,7 +471,7 @@ const MainDashboardComponent: FC = () => {
                                         <div className="relative">
                                             <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 px-6 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
                                                 <span className={`font-bold ${item.Active ? "text-white" : "text-black"}`}>{item.Count}</span>
-                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{item.Type}</span>
+                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{contentTitle}</span>
                                             </button>
                                             <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
                                                 style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "right": "-13px" }}>
@@ -1071,6 +597,7 @@ const MainDashboardComponent: FC = () => {
                     </div>
                 </div>
             </div>
+
             <div className="flex items-center justify-center">
                 <div>
                     {showModal && (

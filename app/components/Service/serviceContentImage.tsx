@@ -5,10 +5,35 @@ import { FC, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 
+type RadioButton = {
+    id: number,
+    title: string,
+    price: string
+}
+
 const ServiceImageContent: FC = () => {
     const [currentIndex, setCurrentIndex] = useState(1);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [sliderCount, setSliderCount] = useState<number>(8);
+    const [price, setPrice] = useState<string>("$25");
+
+    const [radioButton, setRadioButton] = useState<RadioButton[]>(
+        [
+            {
+                id: 0,
+                title: "Starter",
+                price: "$25"
+            }, {
+                id: 1,
+                title: "Standard",
+                price: "$95"
+            }, {
+                id: 2,
+                title: "Advanced",
+                price: "$194"
+            },
+        ]
+    )
 
     const images = [
         '/image/img/1.jpg',
@@ -36,6 +61,10 @@ const ServiceImageContent: FC = () => {
         } else {
             setCurrentIndex(currentIndex);
         }
+    }
+
+    const choosePrice = (id: number) => {
+        setPrice(radioButton[id].price);
     }
 
     useEffect(() => {
@@ -81,83 +110,61 @@ const ServiceImageContent: FC = () => {
                         ))}
                     </div>
                 </div>
-
-                <div className={`w-auto h-auto absolute right-24 responsiveItem`} style={{ "top": "-10rem" }}>
+                <div className={`w-auto h-auto absolute right-24 responsiveItem`} style={{ "top": "2rem" }}>
                     <div className="flex flex-col max-w-sm p-6 mx-auto text-center text-gray-900 bg-white border shadow-lg
-                                border-[#581C87] rounded-lg shadow dark:border-[#581C87] xl:p-8 dark:bg-white dark:text-white">
+                                border-gray-300 rounded-lg shadow xl:p-8 dark:bg-white dark:text-white">
                         <div className="flex items-center justify-center flex-col">
-                            <span className="mr-2 text-5xl font-extrabold text-black">$79</span>
+                            <div className="text-black font-bold">Select service tier</div>
+                            <div className="w-full flex justify-between items-center">
+                                {
+                                    radioButton.map((item) => (
+                                        <div className="flex flex-col items-center justify-center mt-4" key={item.id} onClick={() => choosePrice(item.id)}>
+                                            <input id="inline-radio" type="radio" value="" name="inline-radio-group" className="w-4 h-4 text-[#581C87] bg-gray-100" />
+                                            <label htmlFor="inline-radio" className="text-sm font-medium text-gray-900 dark:text-black-500">{item.title}</label>
+                                            <label htmlFor="inline-radio" className="text-base text-gray-900 dark:text-black-500 font-bold">{item.price}</label>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
-                        <div className="flex flex-col justify-center border-b-2">
-                            <div className="w-full flex items-center py-2 px-4">
-                                <div className="flex items-center">
-                                    <input type="checkbox" name="animal[]" value="cat" className="mr-2 w-4 h-4" />
-                                    <label htmlFor="animal-cat" className="block text-gray-700 font-medium text-base">10000 Words (+5 days)</label>
+                        <div className="flex flex-col justify-center py-4">
+                            <div className="w-full flex items-center py-2">
+                                <h1 className="text-black font-bold text-xl">B A S I K (Simple)</h1>
+                            </div>
+                            <div className="w-full flex flex-col py-2 justify-center">
+                                <span className="text-gray-700 text-base font-bold" style={{ "textAlign": "start" }}>3 Logo Design Concepts + Printable file + Vector Source File + 3D Mockup</span>
+                            </div>
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <div className="w-full flex justify-between items-center py-1">
+                                    <span className="text-black text-sm">Delivery Time</span>
+                                    <span className="text-black text-sm">1 Day</span>
                                 </div>
-                            </div>
-                            <div className="w-full flex flex-col px-4 py-2 justify-center">
-                                <span className="text-gray-700 text-base" style={{ "textAlign": "start" }}>I will professionally translate english to german</span>
-                                <span className="text-gray-700 text-base font-bold py-4" style={{ "textAlign": "start" }}>$45</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <div className="w-full flex items-center py-2 px-4">
-                                <div className="flex items-center">
-                                    <input type="checkbox" name="animal[]" value="cat" className="mr-2 w-4 h-4" />
-                                    <label htmlFor="animal-cat" className="block text-gray-700 font-medium text-base">2000 Words (+5 days)</label>
+                                <div className="w-full flex justify-between items-center py-1">
+                                    <span className="text-black text-sm">Number of Revisions</span>
+                                    <span className="text-black text-sm">3</span>
                                 </div>
-                            </div>
-                            <div className="w-full flex flex-col px-4 py-2 justify-center">
-                                <span className="text-gray-700 text-base" style={{ "textAlign": "start" }}>I will professionally translate english to german</span>
-                                <span className="text-gray-700 text-base font-bold py-4" style={{ "textAlign": "start" }}>$45</span>
+                                <div className="w-full flex justify-between items-center py-1">
+                                    <span className="text-black text-sm">Number of Initial Concepts</span>
+                                    <span className="text-black text-sm">3</span>
+                                </div>
+                                <div className="w-full flex justify-between items-center py-1">
+                                    <span className="text-black text-sm">Printable Resolution File</span>
+                                    <span className="text-black text-sm">3</span>
+                                </div>
+                                <div className="w-full flex justify-between items-center py-1">
+                                    <span className="text-black text-sm">Logo Transparency</span>
+                                    <span className="text-black text-sm">3</span>
+                                </div>
+                                <div className="w-full flex justify-between items-center py-1">
+                                    <span className="text-black text-sm">Source Files</span>
+                                    <span className="text-black text-sm">Vector File</span>
+                                </div>
                             </div>
                         </div>
                         <a href=""
                             className="text-white bg-[#581C87] hover:bg-purple-800 focus:ring-4 
-                                    focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-6 
-                                    text-center dark:text-white">Buy Now $79</a>
-                    </div>
-                    <div className="mt-2 flex flex-col max-w-sm p-6 mx-auto text-center text-gray-900 bg-white border shadow-lg
-                                border-[#581C87] rounded-lg shadow dark:border-[#581C87] xl:p-8 dark:bg-white dark:text-white">
-                        <div className="flex items-center justify-center flex-col">
-                            <span className="mr-2 text-xl font-extrabold text-black">About The Seller</span>
-                        </div>
-                        <div className="w-full flex itmes-center py-4 border-b-2">
-                            <div className="flex items-center">
-                                <img src="https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg" className="w-20 h-20 rounded-full" alt="" />
-                            </div>
-                            <div className="flex flex-col jutify-center px-4">
-                                <span className="text-gray-700 py-1" style={{ "textAlign": "start" }}>John Powell</span>
-                                <span className="text-gray-700 py-1" style={{ "textAlign": "start" }}>Product Manager</span>
-                                <div className="w-full flex items-center py-1" style={{ "textAlign": "start" }}>
-                                    <svg
-                                        className="w-5 h-5 text-yellow-300"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 22 20"
-                                    >
-                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                    </svg>
-                                    <span className="px-2 text-sm text-gray-700">3.0</span>
-                                    <span className="px-2 text-sm text-gray-700">(1 Review)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full flex flex-col justify-center px-8 py-4">
-                            <div className="w-full flex justify-between">
-                                <span className="text-gray-600">Location</span>
-                                <span className="text-gray-600">Rate</span>
-                            </div>
-                            <div className="w-full flex justify-between">
-                                <span className="text-gray-600">Los Angels</span>
-                                <span className="text-gray-600">$45 - $65 / hr</span>
-                            </div>
-                        </div>
-                        <a href=""
-                            className="text-white bg-[#581C87] hover:bg-purple-800 focus:ring-4 
-                                    focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-6 
-                                    text-center dark:text-white">Contact me</a>
+                                    focus:ring-purple-200 font-medium rounded-xl text-sm px-5 py-4 
+                                    text-center dark:text-white mt-2">Buy Now {price}</a>
                     </div>
                 </div>
             </main>

@@ -79,7 +79,7 @@ body {
 
   .responsiveItem-one {
     display: flex;
-    gap: 4;
+    margin-top: 2rem;
   }
 }
 
@@ -87,6 +87,6 @@ body {
   .responsiveItem-one {
     display: flex;
     flex-direction: column;
-    gap: 4;
+    margin-top: 2rem;
   }
 }

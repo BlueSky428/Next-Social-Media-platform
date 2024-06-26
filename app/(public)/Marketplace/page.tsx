@@ -7,6 +7,7 @@ import Marketplace from "@/app/components/MarketplaceComponent/marketplace";
 import BestFreelancer from "@/app/components/MarketplaceComponent/bestFreelancer";
 import MarketFAQ from "@/app/components/MarketplaceComponent/markepFAQ";
 import PriceComponent from "@/app/components/MarketplaceComponent/priceComponent";
+import AboutSeller from "@/app/components/Service/aboutSeller";
 
 const MarketPlaceIndex: FC = () => {
     return (
