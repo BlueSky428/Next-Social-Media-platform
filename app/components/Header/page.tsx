@@ -31,12 +31,7 @@ type Youtube = {
     icon: any
 }
 
-type InstagramData = {
-    setTitle?: any,
-    setContent?: any
-}
-
-const Header: FC<InstagramData> = ({ setTitle, setContent }) => {
+const Header: FC = () => {
     const servicesContext = useContext(serviceContext);
     const [open, setOpen] = useState(false);
     const router = useRouter();

@@ -18,7 +18,7 @@ interface MyProviderProps {
 
 export const ServicesProvider = ({ children }: MyProviderProps) => {
     const [value, setValue] = useState<string>("default value");
-    const [serviceStatus, setServiceStatus] = useState('Instagram Followers');
+    const [serviceStatus, setServiceStatus] = useState('Instagram-Followers');
     const [serviceTitle, setServiceTitle] = useState("Instagram");
 
     useEffect(() => {
