@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 
 const Payment: FC = () => {
 
-    const [price, setPrice] = useState<string>("€2.99")
+    const [price, setPrice] = useState<string>("€2.49")
 
     return (
         <div className="lg:w-[30%] md:w-[45%] sm:w-[60%] w-full lg:flex flex justify-center flex-col items-center border
@@ -15,6 +15,17 @@ const Payment: FC = () => {
                     </div>
                     <div className="mx-auto w-full max-w-[550px] bg-white mt-2">
                         <form>
+                            <div className="mb-5">
+                                <button
+                                    className="hover:shadow-form w-full flex justify-center items-center rounded-md bg-black py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                    Buy with <pre> </pre> <img src="/image/icon/apple.png" className="w-4" /> pay
+                                </button>
+                            </div>
+                            <div className="my-8 border-b text-center">
+                                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                                    Or
+                                </div>
+                            </div>
                             <div className="mb-5">
                                 <label htmlFor="name" className="mb-3 block text-sm font-medium text-[#07074D]">
                                     Your email for receipt
@@ -91,7 +102,7 @@ const Payment: FC = () => {
                             <div>
                                 <button
                                     className="hover:shadow-form w-full flex justify-center items-center rounded-md bg-[#581c87] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                    Buy with <pre> </pre> <img src="/image/icon/apple.png" className="w-4" /> pay
+                                    Pay {price}
                                 </button>
                             </div>
                         </form>

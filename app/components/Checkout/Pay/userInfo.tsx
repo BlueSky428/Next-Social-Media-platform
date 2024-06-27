@@ -1,6 +1,18 @@
-import { FC } from "react";
+"use client"
+import { FC, useEffect, useState } from "react";
+
+type addCartPorps = {
+    isAddCart?: boolean
+}
 
 const UserInfo: FC = () => {
+    const [addCart, setAddCart] = useState<string[]>([]);
+
+    useEffect(() => {
+
+    }, [])
+
+
     return (
         <div className="lg:w-[30%] md:w-[45%] sm:w-[60%] w-full lg:flex flex justify-center flex-col items-center border
                                 lg:mt-4 md:mt-4 sm:mt-4 rounded-lg">

@@ -3,19 +3,23 @@ import { FC, useEffect, useState } from "react";
 type CheckProps = {
     setSelectCheck?: any,
     setPayCheck?: any,
+    setMediaCheck?: any,
     SelectCheck?: boolean,
+    MediaCheck?: boolean
     setNextStep?: any,
-    NextStep?: boolean
+    NextStep?: string
 }
 
-const PaymentContent: FC<CheckProps> = ({ setSelectCheck, setPayCheck, SelectCheck, setNextStep, NextStep }) => {
+const PaymentContent: FC<CheckProps> = ({ setSelectCheck, setPayCheck, SelectCheck, setNextStep, NextStep, setMediaCheck, MediaCheck }) => {
 
     const handelContifuButton = () => {
-        if (SelectCheck) setPayCheck(true);
+        if (SelectCheck) setMediaCheck(true);
+        else if (MediaCheck) setPayCheck(true);
         else setSelectCheck(true);
 
-        if (NextStep === false) setNextStep(true);
-        else setNextStep(false);
+        if (NextStep === "Select") setNextStep("Media");
+        else if (NextStep === "Media") setNextStep("Pay");
+        else setNextStep("Select");
     }
 
     return (

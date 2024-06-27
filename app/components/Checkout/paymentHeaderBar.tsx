@@ -1,16 +1,17 @@
 "use client"
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type CheckProps = {
     SelectCheck?: boolean
     PayCheck?: boolean
+    Media?: boolean
     Headertitle?: string
     HeaderContent?: string
 }
 
-const PaymentHeader: FC<CheckProps> = ({ SelectCheck, PayCheck, Headertitle, HeaderContent }) => {
+const PaymentHeader: FC<CheckProps> = ({ SelectCheck, PayCheck, Headertitle, HeaderContent, Media }) => {
 
     return (
         <>
@@ -25,14 +26,22 @@ const PaymentHeader: FC<CheckProps> = ({ SelectCheck, PayCheck, Headertitle, Hea
                 <span style={{ "color": "black", "marginBottom": "35px" }}>---</span>
                 <div className="flex flex-col lg:px-2 lg:py-2 md:px-3 md:py-3 sm:px-3 sm:py-3 sm:py-3 px-2 py-2 items-center justify-center">
                     <div className="flex justify-center itesm-center relative">
+                        <div className="rounded-full px-2 py-2 border" style={Media ? { "border": "1px solid black" } : { "border": "1px solid gray" }}></div>
+                        <FontAwesomeIcon icon={faCheck} className={`absolute bottom-0 w-4 ${Media ? "" : "hidden"}`} />
+                    </div>
+                    <span className="text-xs lg:py-2 lg:px-1 md:py-2 md:px-1 sm:py-2 sm:px-1 py-2 px-1" style={Media ? { "color": "black" } : { "color": "gray" }}>Media</span>
+                </div>
+                <span style={{ "color": "black", "marginBottom": "35px" }}>---</span>
+                <div className="flex flex-col lg:px-2 lg:py-2 md:px-3 md:py-3 sm:px-3 sm:py-3 sm:py-3 px-2 py-2 items-center justify-center">
+                    <div className="flex justify-center itesm-center relative">
                         <div className="rounded-full px-2 py-2 border" style={PayCheck ? { "border": "1px solid black" } : { "border": "1px solid gray" }}></div>
                         <FontAwesomeIcon icon={faCheck} className={`absolute bottom-0 w-4 ${PayCheck ? "" : "hidden"}`} />
                     </div>
                     <span className="text-xs lg:py-2 lg:px-1 md:py-2 md:px-1 sm:py-2 sm:px-1 py-2 px-1" style={PayCheck ? { "color": "black" } : { "color": "gray" }}>Pay</span>
                 </div>
             </div>
-            <div className="lg:w-full lg:flex md:flex sm:flex flex-col flex justify-center items-center">
-                <h1 className="lg:text-2xl md:text-2xl sm:text-2xl text-xl font-bold">{Headertitle} & package</h1>
+            <div className="lg:w-[32%] md:w-[45%] sm:w-[65%] lg:flex md:flex sm:flex flex-col flex justify-center items-center">
+                <h1 className="lg:text-2xl md:text-2xl sm:text-2xl text-xl font-bold">{Headertitle}</h1>
                 <span className="text-sm">{HeaderContent}</span>
             </div>
         </>

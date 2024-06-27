@@ -80,12 +80,7 @@ const Header: FC = () => {
             id: 2,
             content: "Likes",
             icon: faHeart
-        },
-        {
-            id: 3,
-            content: "Auto Likes",
-            icon: faHeart
-        },
+        }
     ]
 
     const tiktok: TikTok[] = [
@@ -177,9 +172,8 @@ const Header: FC = () => {
         setOpen(false);
         setList(false);
         setDropdown(false);
-        localStorage.setItem('servicesStatus', instagram[id].content);
+        localStorage.setItem('servicesStatus', "Instagram" + "-" + instagram[id].content);
         servicesContext?.setServices("Instagram" + "-" + instagram[id].content);
-        // servicesContext?.setServicesTitle("Instagram");
         router.push("/Dashboard");
     }
 
@@ -187,9 +181,8 @@ const Header: FC = () => {
         setOpen(false);
         setList(false);
         setDropdown(false);
-        localStorage.setItem('servicesStatus', facebook[id].content);
+        localStorage.setItem('servicesStatus', "FaceBook" + "-" + facebook[id].content);
         servicesContext?.setServices("FaceBook" + "-" + facebook[id].content);
-        // servicesContext?.setServicesTitle("FaceBook");
         router.push("/Dashboard");
     }
 
@@ -197,19 +190,17 @@ const Header: FC = () => {
         setOpen(false);
         setList(false);
         setDropdown(false);
-        localStorage.setItem('servicesStatus', tiktok[id].content);
+
+        localStorage.setItem('servicesStatus', "TikTok" + "-" + tiktok[id].content);
         servicesContext?.setServices("TikTok" + "-" + tiktok[id].content);
-        servicesContext?.setServicesTitle("TikTok");
-        router.push("/Dashboard");
     }
 
     const handleYoutube = (id: number) => {
         setOpen(false);
         setList(false);
         setDropdown(false);
-        localStorage.setItem('servicesStatus', youtube[id].content);
+        localStorage.setItem('servicesStatus', "Youtube" + "-" + youtube[id].content);
         servicesContext?.setServices("Youtube" + "-" + youtube[id].content);
-        // servicesContext?.setServicesTitle("Youtube");
         router.push("/Dashboard");
     }
 
@@ -332,7 +323,7 @@ const Header: FC = () => {
                             </div>
                         </div>
 
-                        {['FAQ', 'Blog', 'Contact', 'Market Place', 'My Account'].map((item) => (
+                        {['FAQ', 'Blog', 'Market Place', 'My Account'].map((item) => (
                             <a key={item} onClick={() => Go_To_MarketPage(item)}
                                 className="cursor-pointer px-4 py-2 mt-2 text-sm font-semibold bg-transparent hover-text-white rounded-lg 
                                         dark:hover:bg-[#581C87] transition duration-300 dark:focus:bg-[#581C87] dark:focus:text-white dark:hover:text-white dark:text-black md:mt-0 md:ml-4 
