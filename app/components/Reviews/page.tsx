@@ -1,8 +1,11 @@
 "use client"
-import { FC } from "react";
+import { FC, useState } from "react";
 import AwesomeSlider from "react-awesome-slider";
 import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import StarRating from "../Service/starRating";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 type Review = {
     id: number,
@@ -12,6 +15,9 @@ type Review = {
 }
 
 const Reviews: FC = () => {
+
+    const [starCount, setStarCount] = useState<number>(0);
+    const [isReviewSection, setIsReciewSection] = useState<boolean>(false);
 
     const review: Review[] = [
         { id: 0, username: "Zabrina", content: "Blastup saved my profile by boosting the views for my videos made for my business. Really good. Thx", start: 4 },
@@ -106,12 +112,46 @@ const Reviews: FC = () => {
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                         </svg>
                     </div>
-                    <div className="lg:absolute lg:right-10 lg:text-sm sm:text-xs p-5 rounded-lg text-white bg-[#581C87] 
-                                    cursor-pointer hover:bg-white hover:text-[#581C87] border border-[#581C87] transition  duration:300 hover:shadow-lg">
+                    <div className="lg:absolute lg:right-10 lg:text-sm sm:text-xs p-5 rounded-lg text-white bg-[#581C87]
+                                    cursor-pointer hover:bg-white hover:text-[#581C87] border border-[#581C87] transition  duration:300 hover:shadow-lg" onClick={() => setIsReciewSection(!isReviewSection)}>
                         Submit your reviews
                     </div>
                 </div>
-                <div className="lg:w-3/4 md:w-3/4 w-full lg:h-52 md:h-44 sm:h-44 lg:flex md:flex sm:flex flex flex-col justify-center items-center bg-white relative">
+
+                <div className={`${isReviewSection ? "lg:w-[60%] lg:flex md:flex sm:flex justify-center items-center bg-white rounded-lg relative bg-white dark:bg-white p-4 shadow-lg" : "hidden"}`}>
+                    <div className="lg:w-[90%] md:w-[90%] sm:w-[90%] w-full relative">
+                        <div className="w-6 h-6 border rounded-full absolute right-0 flex justify-center items-center cursor-pointer" onClick={() => setIsReciewSection(false)}>
+                            <FontAwesomeIcon icon={faClose} />
+                        </div>
+                        <div className="flex items-center py-3">
+                            <StarRating setStarCount={setStarCount} />
+                            <span className="px-4 text-xl font-bold">{starCount} / 5</span>
+                        </div>
+                        <div className="w-full flex justify-center items-center gap-2 lg:flex-row md:flex-row sm:flex-row flex-col">
+                            <div className="lg:w-1/2 md:w-1/2 sm:w-1/2 w-full py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-100">
+                                <input
+                                    className="px-0 w-full text-sm text-black-900 border-0 focus:ring-0 focus:outline-none dark:placeholder-gray-400 dark:bg-gray-100"
+                                    placeholder="Your Name" required />
+                            </div>
+                            <div className="lg:w-1/2 md:w-1/2 sm:w-1/2 w-full py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-100">
+                                <input
+                                    className="px-0 w-full text-sm text-black-900 border-0 focus:ring-0 focus:outline-none dark:placeholder-gray-400 dark:bg-gray-100"
+                                    placeholder="Your email" required />
+                            </div>
+                        </div>
+                        <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-100">
+                            <textarea id="comment" rows={8}
+                                className="px-0 w-full text-sm text-black-900 border-0 focus:ring-0 focus:outline-none dark:placeholder-gray-400 dark:bg-gray-100"
+                                placeholder="Write a comment..." required></textarea>
+                        </div>
+                        <button type="submit"
+                            className="inline-flex items-center py-4 px-4 text-xs font-medium text-center text-white bg-[#581c87] rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                            Post comment
+                        </button>
+                    </div>
+                </div>
+
+                <div className="lg:w-3/4 md:w-3/4 w-full lg:h-52 md:h-44 sm:h-44 lg:flex md:flex sm:flex flex flex-col justify-center items-center bg-white relative mt-4">
                     <AwesomeSlider className="h-full bg-white">
                         <div className="w-full h-full lg:flex md:flex flex flex-col sm:flex justify-center items-center bg-[#581C87]">
                             <div className="text-2xl text-white">Trustpoilt</div>

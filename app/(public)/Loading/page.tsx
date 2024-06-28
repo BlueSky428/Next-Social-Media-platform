@@ -1,14 +1,7 @@
 "use client"
-import { FC, useEffect, useRef } from "react";
+import { FC } from "react";
 
 const Loading: FC = () => {
-
-    const loadingRef = useRef(null)
-
-    useEffect(() => {
-        setTimeout(() => {
-        }, 2500)
-    }, [])
 
     return (
         <div className="w-screen h-screen bg-white flex justify-center items-center">

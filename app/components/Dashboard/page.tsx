@@ -431,6 +431,8 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
     useEffect(() => {
         setCategory(Title);
         setContentTitle(Content);
+        if (Content !== "Followers") setButItemDetailState(true);
+        else setButItemDetailState(false);
     }, [Title, Content])
 
     useEffect(() => {
@@ -454,13 +456,41 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 and easily with just a few clicks. See our deals below!
                             </span>
                         </div>
-                        <div className="bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full inline-flex shadow-lg">
+                        <div className="w-full bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full inline-flex shadow-lg">
                             <button onClick={() => ChangeBuyModePress(false)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-l-full px-4 py-2 ${buyMode ? "bg-white text-[#581C87]" : "bg-[#581C87] text-white"}`}>
                                 High Quality {contentTitle}
                             </button>
                             <button onClick={() => ChangeBuyModePress(true)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-r-full px-4 py-2 ${buyMode ? "bg-[#581C87] text-white" : "bg-white text-[#581C87]"}`}>
                                 Active {contentTitle}
                             </button>
+                        </div>
+                    </div>
+                    <div className="card bg-white py-3 flex flex-col w-4/5">
+                        <div className="w-full py-3 text-center">
+                            {
+                                buyItems.map((item) => (
+                                    <div className="inline-block px-2 py-1 w-24 " key={item.id}>
+                                        <div className="relative">
+                                            <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 px-6 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
+                                                <span className={`font-bold ${item.Active ? "text-white" : "text-black"}`}>{item.Count}</span>
+                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{item.Type === "Followers" ? contentTitle : item.Type}</span>
+                                            </button>
+                                            <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
+                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "right": "-13px" }}>
+                                                <img src="/image/icon/plus.png" alt="" />
+                                            </button>
+                                            <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
+                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "left": "-13px" }}>
+                                                <img src="/image/icon/minuse.png" alt="" />
+                                            </button>
+                                            <div className={item.Type === "Followers" || item.BestSelling === true ? "hidden" : "absolute"} style={{ "top": "-10px", "right": "-10px" }}>
+                                                <img src="/image/img/percent.png" className="w-6" alt="" />
+                                            </div>
+                                            <div className={`absolute w-full top-0 text-[10px] rounded-full text-white bg-[#9333EA] ${item.BestSelling ? "" : "hidden"}`}>BEST SELLING</div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                     <div className="card bg-white py-3 flex w-full" style={{ "marginLeft": "5px" }}>
@@ -567,38 +597,8 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="card bg-white py-3 flex flex-col w-4/5">
-                        <div className="w-full py-3 text-center">
-                            {
-                                buyItems.map((item) => (
-                                    <div className="inline-block px-2 py-1 w-24 " key={item.id}>
-                                        <div className="relative">
-                                            <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 px-6 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
-                                                <span className={`font-bold ${item.Active ? "text-white" : "text-black"}`}>{item.Count}</span>
-                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{item.Type === "Followers" ? contentTitle : item.Type}</span>
-                                            </button>
-                                            <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
-                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "right": "-13px" }}>
-                                                <img src="/image/icon/plus.png" alt="" />
-                                            </button>
-                                            <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
-                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "left": "-13px" }}>
-                                                <img src="/image/icon/minuse.png" alt="" />
-                                            </button>
-                                            <div className={item.Type === "Followers" || item.BestSelling === true ? "hidden" : "absolute"} style={{ "top": "-10px", "right": "-10px" }}>
-                                                <img src="/image/img/percent.png" className="w-6" alt="" />
-                                            </div>
-                                            <div className={`absolute w-full top-0 text-[10px] rounded-full text-white bg-[#9333EA] ${item.BestSelling ? "" : "hidden"}`}>BEST SELLING</div>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
             <div className="flex items-center justify-center">
                 <div>
                     {showModal && (

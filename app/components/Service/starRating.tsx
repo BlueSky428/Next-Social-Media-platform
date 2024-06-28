@@ -1,15 +1,22 @@
 "use client"
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 interface StarRatingProps {
     totalStars?: number;
+    setStarCount?: any
 }
 
-const StarRating: FC<StarRatingProps> = ({ totalStars = 5 }) => {
-    const [rating, setRating] = useState(0);
+const StarRating: FC<StarRatingProps> = ({ totalStars = 5, setStarCount }) => {
+    const [rating, setRating] = useState<number>(0);
     const [hover, setHover] = useState(0);
+
+    useEffect(() => {
+        if (rating) {
+            setStarCount(rating);
+        }
+    }, [rating])
 
     return (
         <div className="flex items-center text-sm text-[#d3d3d3]">

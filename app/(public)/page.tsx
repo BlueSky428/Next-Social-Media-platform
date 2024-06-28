@@ -1,12 +1,9 @@
+"use client"
 import { FC } from "react";
-import Dashboard from "./Dashboard/page";
+import HomePage from "./homepage/page";
 
 const Index: FC = () => {
-    return (
-        <>
-            <Dashboard />
-        </>
-    )
+    return <HomePage />
 }
 
 export default Index;

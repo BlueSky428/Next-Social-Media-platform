@@ -127,7 +127,7 @@ const Header: FC = () => {
         } else if (item === "Market Place") {
             router.push("/Marketplace");
         } else if (item === "Home") {
-            router.push("/Dashboard");
+            router.push("/homepage");
         }
     }
 
