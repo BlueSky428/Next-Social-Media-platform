@@ -2,8 +2,8 @@ import { FC } from "react";
 
 const PaymentMethod: FC = () => {
     return (
-        <div className="lg:w-[30%] md:w-[45%] sm:w-[60%] w-full lg:flex flex justify-center flex-col items-center border-dashed
-                                lg:mt-4 md:mt-4 sm:mt-4 rounded-lg" style={{ "border": "1px dashed #581c87" }}>
+        <div className="lg:w-[35%] md:w-[45%] sm:w-[60%] w-full lg:flex flex justify-center flex-col items-center border-dashed
+                                lg:mt-12 md:mt-12 sm:mt-12 mt-12 rounded-lg" style={{ "border": "1px dashed #581c87" }}>
             <div className="w-full flex justify-center items-center">
                 <span className="text-sm py-2">Accepted payment methods</span>
             </div>

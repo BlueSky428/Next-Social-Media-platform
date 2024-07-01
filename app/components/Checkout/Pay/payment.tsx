@@ -1,8 +1,49 @@
 import { FC, useState } from "react";
+import { getData } from "country-list";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faKey, faKeyboard, faLock, faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faKeycdn } from "@fortawesome/free-brands-svg-icons";
+
+type Country = {
+    name: string,
+    code: string
+}
 
 const Payment: FC = () => {
 
-    const [price, setPrice] = useState<string>("€2.49")
+    const [price, setPrice] = useState<string>("€2.49");
+    const [value, setValue] = useState<string>('');
+    const [isShowCountry, setIsShowCountry] = useState<boolean>(false);
+    const [date, setDate] = useState<string>("");
+    const [cardNumber, setCardNumber] = useState<string>("");
+
+    const countries: Country[] = getData();
+    const [countryName, setCountryName] = useState<string>("Andorra")
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const inputValue = event.target.value;
+        if (/^\d*$/.test(inputValue)) {
+            setValue(inputValue)
+        }
+    };
+
+    const handleCardNumber = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const inputValue = event.target.value;
+        if (/^\d*$/.test(inputValue)) {
+            setCardNumber(inputValue);
+        }
+    }
+
+    const handleSetCountryName = (countryName: string) => {
+        setCountryName(countryName);
+        setIsShowCountry(false);
+    }
+
+    const [selectedDate, setSelectedDate] = useState<string>('');
+
+    const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedDate(event.target.value);
+    };
 
     return (
         <div className="lg:w-[30%] md:w-[45%] sm:w-[60%] w-full lg:flex flex justify-center flex-col items-center border
@@ -18,7 +59,7 @@ const Payment: FC = () => {
                             <div className="mb-5">
                                 <button
                                     className="hover:shadow-form w-full flex justify-center items-center rounded-md bg-black py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                    Buy with <pre> </pre> <img src="/image/icon/apple.png" className="w-4" /> pay
+                                    Buy with Apple pay
                                 </button>
                             </div>
                             <div className="my-8 border-b text-center">
@@ -35,20 +76,16 @@ const Payment: FC = () => {
                             </div>
                             <div className="mb-5">
                                 <label htmlFor="gender" className="block text-gray-700 text-sm mb-2">Your country of residence</label>
-                                <select id="package-select" name="package-select" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required>
-                                    <option disabled value="">Select package...</option>
-                                    <option value="250">250 followers / €4.99</option>
-                                    <option value="500">500 followers / €6.99</option>
-                                    <option value="750">750 followers / €9.99</option>
-                                    <option value="100">100 followers / €2.99</option>
-                                    <option value="1000">1000 followers / €12.99</option>
-                                    <option value="1500">1500 followers / €18.99</option>
-                                    <option value="2000">2000 followers / €24.49</option>
-                                    <option value="2500">2500 followers / €29.99</option>
-                                    <option value="5000">5000 followers / €39.99</option>
-                                    <option value="7500">7500 followers / €49.99</option>
-                                    <option value="10000">10000 followers / €60.00</option>
-                                </select>
+                                <div className="w-full flex items-center flex-col relative">
+                                    <div onClick={() => setIsShowCountry(true)} className="cursor-pointer w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{countryName}</div>
+                                    <div className={`${isShowCountry ? "flex flex-col w-full h-96 overflow-y-scroll border" : "hidden"}`}>
+                                        {
+                                            countries.map((country) => (
+                                                <div key={country.code} onClick={() => handleSetCountryName(country.name)} className="w-full flex items-center px-6 py-1 cursor-pointer hover:bg-blue-300">{country.name}</div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
                             </div>
                             <div className="mb-5">
                                 <label htmlFor="email" className="mb-3 block text-sm font-medium text-[#07074D]">
@@ -66,27 +103,36 @@ const Payment: FC = () => {
                             </div>
                             <div className="mb-5">
                                 <label htmlFor="email" className="mb-3 block text-sm font-medium text-[#07074D]">
-                                    Card number
+                                    Card number <FontAwesomeIcon icon={faLock} color="#7FFF00" className="px-1" />
                                 </label>
-                                <input type="number" name="email" id="email" placeholder="•••• •••• •••• ••••"
+                                <input type="text" placeholder="•••• •••• •••• ••••" onChange={handleCardNumber} value={cardNumber}
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
                             <div className="-mx-3 flex flex-wrap">
                                 <div className="w-full px-3 sm:w-1/2">
                                     <div className="mb-5">
                                         <label htmlFor="date" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            Date
+                                            Date <FontAwesomeIcon icon={faLock} color="#7FFF00" className="px-1" />
                                         </label>
-                                        <input type="date" name="date" id="date"
-                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                        {/* <input type="text" placeholder="MM/YY" onChange={handleDate} value={date}
+                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" /> */}
+                                        <input
+                                            type="month"
+                                            id="month-picker"
+                                            name="month-picker"
+                                            placeholder="MM/YY"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        />
                                     </div>
                                 </div>
                                 <div className="w-full px-3 sm:w-1/2">
                                     <div className="mb-5">
                                         <label htmlFor="time" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            CVV/CVC
+                                            CVV/CVC <FontAwesomeIcon icon={faLock} color="#7FFF00" className="px-1" />
                                         </label>
-                                        <input type="number" name="time" id="time" placeholder="•••"
+                                        <input type="text" name="time" id="time" placeholder="•••" value={value} onChange={handleChange}
                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                     </div>
                                 </div>
@@ -95,7 +141,7 @@ const Payment: FC = () => {
                                 <label className="block text-gray-500 font-bold">
                                     <input className="mr-2 leading-tight" type="checkbox" />
                                     <span className="text-sm">
-                                        Remember this card
+                                        Remember this card <FontAwesomeIcon icon={faQuestion} className="px-1" />
                                     </span>
                                 </label>
                             </div>

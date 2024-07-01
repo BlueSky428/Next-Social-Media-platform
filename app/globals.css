@@ -90,3 +90,20 @@ body {
     margin-top: 2rem;
   }
 }
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+/* Optionally, customize the option elements if the browser supports it */
+option {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

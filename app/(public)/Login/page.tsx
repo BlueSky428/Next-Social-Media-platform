@@ -6,7 +6,7 @@ const Login: FC = () => {
     const router = useRouter();
 
     const Login = () => {
-        router.push("/Dashboard");
+        router.push("/homepage");
     }
 
     const Register = () => {

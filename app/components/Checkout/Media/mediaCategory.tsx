@@ -97,7 +97,7 @@ const MediaCategory: FC<ComponentProps> = ({ setComponent, setMediaCheck }) => {
             </div>
             <div className="w-full bg-white rounded-lg mx-auto max-w-2xl lg:px-2 md:px-2 sm:px-2 px-1 mt-4">
                 <div className="w-full flex items-center justify-center lg:py-4 lg:px-2 border rounded-lg bg-gray-100 cursor-pointer">
-                    <div className="flex justify-center items-center w-auto px-2">
+                    <div className="flex justify-center items-center w-auto lg:px-2 md:px-2 py-3">
                         <span className="text-sm">Load more</span>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ const MediaCategory: FC<ComponentProps> = ({ setComponent, setMediaCheck }) => {
                     <div className="flex justify-center w-auto px-2">
                         <span className="text-sm">Selected {postCount} post</span>
                     </div>
-                    <button type="button" className="px-6 py-2 text-white rounded-lg flex justify-center items-center bg-[#581c87]" onClick={nextComponent}>
+                    <button type="button" className="lg:px-6 lg:py-2 md:px-4 md:py-2 sm:px-4 sm:py-2 px-3 py-1 text-white rounded-lg flex justify-center items-center bg-[#581c87]" onClick={nextComponent}>
                         Next
                     </button>
                 </div>

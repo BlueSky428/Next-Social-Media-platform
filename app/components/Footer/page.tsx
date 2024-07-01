@@ -39,7 +39,6 @@ const Footer: FC = () => {
                             <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Instagram Services</a></li>
                             <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">TikTok Services</a></li>
                             <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Facebook Services</a></li>
-                            <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Spotify Services</a></li>
                             <li><a href="/" className=" text-gray-600 hover:text-gray-900">Youtube Services</a></li>
                         </ul>
                     </div>

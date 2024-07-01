@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward } from "@fortawesome/free-solid-svg-icons/faForward";
+import { useRouter } from "next/navigation";
 
 type SkillCategory = {
     id: number,
@@ -30,6 +31,7 @@ const ExpertFreelancer: FC = () => {
     const [isMobileSM, setIsMobileSM] = useState<boolean>(false);
     const [isMobileXS, setIsMobileXS] = useState<boolean>(false);
     const [sliderCount, setSliderCount] = useState<number>(4);
+    const router = useRouter();
 
     const [skills, setSkill] = useState<SkillCategory[]>(
         [
@@ -151,8 +153,12 @@ const ExpertFreelancer: FC = () => {
         }
     }, [isMobileMD, isMobileSM, isMobileXS, sliderCount])
 
+    const freelancerInfo = () => {
+        router.push("/Freelancer");
+    }
+
     return (
-        <div className="bg-white w-full flex">
+        <div className="bg-white w-full flex py-8">
             <div className="mx-auto max-w-screen-xl px-4 w-full justify-center bg-white">
                 <h2 className="font-bold text-2xl text-black-900 py-4">Expert Freelancers</h2>
                 <Swiper
@@ -163,7 +169,7 @@ const ExpertFreelancer: FC = () => {
                     {
                         freelancer.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 max-w-sm border cursor-pointer">
+                                <div className="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 max-w-sm border cursor-pointer" onClick={() => freelancerInfo()}>
                                     <div className="h-auto overflow-hidden">
                                         <div className="h-auto overflow-hidden flex flex-col justify-center items-center py-6">
                                             <img src={item.avatar} className="w-24 h-24 rounded-full" alt="" />

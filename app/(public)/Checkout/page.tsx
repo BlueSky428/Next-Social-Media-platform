@@ -10,6 +10,7 @@ import Setting from "@/app/components/Checkout/Pay/setting"
 import UserInfo from "@/app/components/Checkout/Pay/userInfo"
 import { FC, useEffect, useState } from "react"
 import MediaCategory from "@/app/components/Checkout/Media/mediaCategory"
+import IncludeFollowers from "@/app/components/Checkout/Pay/followers"
 
 const CheckOut: FC = () => {
 
@@ -57,6 +58,7 @@ const CheckOut: FC = () => {
                         <AddCart setPrevious={setNextStep} currentComponent={nextStep} setMedia={setIsMediaCheck} />
                         <UserInfo />
                         <Setting />
+                        <IncludeFollowers />
                         <Payment />
                     </>
                 )

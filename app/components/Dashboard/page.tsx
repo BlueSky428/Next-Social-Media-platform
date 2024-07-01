@@ -456,7 +456,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 and easily with just a few clicks. See our deals below!
                             </span>
                         </div>
-                        <div className="w-full bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full inline-flex shadow-lg">
+                        <div className="lg:w-[380px] bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full flex shadow-lg">
                             <button onClick={() => ChangeBuyModePress(false)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-l-full px-4 py-2 ${buyMode ? "bg-white text-[#581C87]" : "bg-[#581C87] text-white"}`}>
                                 High Quality {contentTitle}
                             </button>
@@ -471,7 +471,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 buyItems.map((item) => (
                                     <div className="inline-block px-2 py-1 w-24 " key={item.id}>
                                         <div className="relative">
-                                            <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 px-6 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
+                                            <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
                                                 <span className={`font-bold ${item.Active ? "text-white" : "text-black"}`}>{item.Count}</span>
                                                 <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{item.Type === "Followers" ? contentTitle : item.Type}</span>
                                             </button>
@@ -537,7 +537,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 </div>
                                 <div className="lg:w-full md:w-full sm:w-full lg:flex justify-center items-center py-5">
                                     <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative">
-                                        <button type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-white`}>
+                                        <button type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-white`}>
                                             <span className="ml-0.5 text-[#581C87]">Free Trial 25 {contentTitle}</span>
                                         </button>
                                     </div>
