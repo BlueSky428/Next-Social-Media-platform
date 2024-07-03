@@ -103,7 +103,7 @@ const Payment: FC = () => {
                             </div>
                             <div className="mb-5">
                                 <label htmlFor="email" className="mb-3 block text-sm font-medium text-[#07074D]">
-                                    Card number <FontAwesomeIcon icon={faLock} color="#7FFF00" className="px-1" />
+                                    Card number <FontAwesomeIcon icon={faLock} color="green" className="px-1" />
                                 </label>
                                 <input type="text" placeholder="•••• •••• •••• ••••" onChange={handleCardNumber} value={cardNumber}
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
@@ -112,7 +112,7 @@ const Payment: FC = () => {
                                 <div className="w-full px-3 sm:w-1/2">
                                     <div className="mb-5">
                                         <label htmlFor="date" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            Date <FontAwesomeIcon icon={faLock} color="#7FFF00" className="px-1" />
+                                            Date <FontAwesomeIcon icon={faLock} color="green" className="px-1" />
                                         </label>
                                         {/* <input type="text" placeholder="MM/YY" onChange={handleDate} value={date}
                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" /> */}
@@ -130,7 +130,7 @@ const Payment: FC = () => {
                                 <div className="w-full px-3 sm:w-1/2">
                                     <div className="mb-5">
                                         <label htmlFor="time" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            CVV/CVC <FontAwesomeIcon icon={faLock} color="#7FFF00" className="px-1" />
+                                            CVV/CVC <FontAwesomeIcon icon={faLock} color="green" className="px-1" />
                                         </label>
                                         <input type="text" name="time" id="time" placeholder="•••" value={value} onChange={handleChange}
                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />

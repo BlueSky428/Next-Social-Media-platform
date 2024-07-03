@@ -3,12 +3,12 @@ import { FC } from "react";
 const FirstComponent: FC = () => {
     return (
         <section className="container space-y-6 bg-white py-8 mx-auto md:py-12 mt-20">
-            <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4" >
+            <div className="mx-auto max-w-screen-xl px-4 w-full justify-center">
                 <h2 className="font-heading text-2xl leading-[1.1] sm:text-2xl md:text-2xl font-bold text-gray-600">Need something done?</h2>
                 <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">Most viewed and all-time top-selling services</p>
             </div >
             <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[77rem] md:grid-cols-4">
-                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer">
+                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer hover:border-black">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-terminal">
@@ -19,7 +19,7 @@ const FirstComponent: FC = () => {
                         <h3 className="font-bold">Post a job</h3>
                     </div>
                 </a>
-                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer">
+                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer hover:border-black">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-grid">
@@ -33,7 +33,7 @@ const FirstComponent: FC = () => {
                         <h3 className="font-bold">Choose freelancers</h3>
                     </div>
                 </a>
-                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer">
+                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer hover:border-black">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-sliders-horizontal">
@@ -51,7 +51,7 @@ const FirstComponent: FC = () => {
                         <h3 className="font-bold">Pay safely</h3>
                     </div>
                 </a>
-                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer">
+                <a className="relative overflow-hidden border rounded-full bg-background p-2 flex items-center cursor-pointer hover:border-black">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                         strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-file-minus">

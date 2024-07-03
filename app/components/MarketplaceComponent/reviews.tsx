@@ -8,6 +8,16 @@ type Review = {
     userName: string
 }
 
+type MarketingService = {
+    id: number
+    content: string
+}
+
+type MediaMarketing = {
+    id: number
+    content: string
+}
+
 const ReviewsComponent: FC = () => {
 
     const [review, setReview] = useState<Review[]>(
@@ -40,79 +50,73 @@ const ReviewsComponent: FC = () => {
         ]
     )
 
+    const [marketingService, setMarketingService] = useState<MarketingService[]>([
+        { id: 0, content: "Public Relations" },
+        { id: 1, content: "Podcast Marketing" },
+        { id: 2, content: "Influencer marketing" },
+        { id: 3, content: "Article writing" },
+        { id: 4, content: "Video marketing" },
+        { id: 5, content: "Press releases" },
+        { id: 6, content: "Instagram marketing" },
+        { id: 7, content: "YouTube marketing" },
+        { id: 8, content: "Discord social media marketing" },
+        { id: 9, content: "Facebook marketing" },
+        { id: 10, content: "Pinterest marketing" },
+        { id: 11, content: "Snapchat marketing" },
+        { id: 12, content: "Twitter marketing" },
+        { id: 13, content: "Product hunt marketing" },
+        { id: 14, content: "Reddit marketing" },
+        { id: 15, content: "Linkedin marketing" },
+        { id: 16, content: "TikTok marketing" },
+    ])
+
+    const [mediaMarketing, setMediaMarketing] = useState<MediaMarketing[]>([
+        { id: 0, content: "Social media managers" },
+        { id: 1, content: "Instagram exoerts" },
+        { id: 2, content: "Instagram caption writers" },
+        { id: 3, content: "Instagram copywriters" },
+        { id: 4, content: "Instagram griwth experts" },
+        { id: 5, content: "Google ad managers" },
+        { id: 6, content: "Hashtag researchers" },
+        { id: 7, content: "Responsive designers" },
+        { id: 8, content: "Facebook experts" },
+        { id: 9, content: "Social media designers" },
+        { id: 10, content: "Twitter experts" },
+        { id: 11, content: "Lead generation experts" },
+        { id: 12, content: "Excel experts" },
+        { id: 13, content: "Excel spreadsheet experts" },
+        { id: 14, content: "Video marketing experts" },
+        { id: 15, content: "Facebook API developers" },
+        { id: 16, content: "Google analytics experts" },
+    ])
+
     return (
-        <div className="mx-auto max-w-screen-xl px-4 w-full justify-center">
-            <h2 className="font-bold text-2xl text-gray-600 text-center">What people say about us</h2>
-            <div className="grid w-full md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4 gap-6 flex justify-center">
-                {
-                    review.map((item) => (
-                        <div key={item.id} className="flex flex-col justify-between rounded-md border border-[#581C87] bg-white p-8 shadow-sm max-w-sm mx-auto mt-24">
-                            <div className="text-black-500 flex gap-2">
-                                <svg
-                                    className="w-5 h-5 text-yellow-300 ms-1"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 22 20"
-                                >
-                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg
-                                    className="w-5 h-5 text-yellow-300 ms-1"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 22 20"
-                                >
-                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg
-                                    className="w-5 h-5 text-yellow-300 ms-1"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 22 20"
-                                >
-                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg
-                                    className="w-5 h-5 text-yellow-300 ms-1"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 22 20"
-                                >
-                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg
-                                    className="w-5 h-5 ms-1 text-gray-300 dark:text-gray-500"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 22 20"
-                                >
-                                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
+        <>
+            <div className="mx-auto max-w-screen-xl px-4 w-full justify-center">
+                <h2 className="font-bold text-2xl text-gray-600 text-center">Explore More Social Media Marketing Services</h2>
+                <div className="w-full gap-6 flex justify-center flex-wrap py-4">
+                    {
+                        marketingService.map((items) => (
+                            <div key={items.id} className="flex justify-center items-center px-2 py-2 bg-gray-200 rounded-full w-auto text-sm">
+                                {items.content}
                             </div>
-                            <p className="my-4 mb-0 text-base font-normal leading-relaxed tracking-wide text-gray-400">
-                                {item.content}
-                            </p>
-                            <div className="mt-6 flex items-center gap-6 ">
-                                <div className="h-10 w-10 overflow-hidden rounded-full shadow-sm outline-[#581C87]">
-                                    <div className="relative inline-block overflow-hidden rounded-lg border-[#581C87]">
-                                        <img alt="" src={item.userAvatar} width="50" height="50"
-                                            decoding="async" data-nimg="1" className="inline-block " loading="lazy" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <p className="leading-relaxed tracking-wide text-black-500">{item.userName}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
+                        ))
+                    }
+                </div>
             </div>
-        </div>
+            <div className="mx-auto max-w-screen-xl px-4 w-full justify-center mt-12">
+                <h2 className="font-bold text-2xl text-gray-600 text-center">Hire freelancers related to Social Media Marketing</h2>
+                <div className="w-full gap-6 flex justify-center flex-wrap py-4">
+                    {
+                        mediaMarketing.map((items) => (
+                            <div key={items.id} className="flex justify-center items-center px-2 py-2 bg-gray-200 rounded-full w-auto text-sm">
+                                {items.content}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </>
     )
 }
 

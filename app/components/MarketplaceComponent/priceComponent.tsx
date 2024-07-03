@@ -4,10 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 
 
-type Price = {
+type FooterComponent = {
     id: number,
-    price: string,
-    plantype: string,
+    image: string,
+    content: string,
 }
 
 const PriceComponent: FC = () => {
@@ -15,32 +15,14 @@ const PriceComponent: FC = () => {
     const [isMobileMD, setIsMobileMD] = useState<boolean>(false);
     const [isMobileSM, setIsMobileSM] = useState<boolean>(false);
     const [isMobileXS, setIsMobileXS] = useState<boolean>(false);
-    const [sliderCount, setSliderCount] = useState<number>(4);
+    const [sliderCount, setSliderCount] = useState<number>(3);
 
-    const [price, setPrice] = useState<Price[]>(
-        [
-            {
-                id: 0,
-                price: "$29",
-                plantype: "Basic Plan",
-            },
-            {
-                id: 1,
-                price: "$59",
-                plantype: "Standard Plan",
-            },
-            {
-                id: 2,
-                price: "$89",
-                plantype: "Extended Plan",
-            },
-            {
-                id: 3,
-                price: "$129",
-                plantype: "Enterprise Plan",
-            }
-        ]
-    )
+    const [footerComponent, setFooterComponent] = useState<FooterComponent[]>([
+        { id: 0, image: "https://fiverr-res.cloudinary.com/f_auto,q_auto/v1/attachments/generic_asset/asset/94cd1fb842d2f83673cb82471cf31391-1681338894376/1679327104976-Socialmediacampaignexamples.png", content: "10 Inspiring social media campaign examples(+tips)" },
+        { id: 1, image: "https://fiverr-res.cloudinary.com/image/upload/w_430/f_auto,q_auto/v1/attachments/generic_asset/asset/f8b90c2d98253cab80acab0fcdb7ccfe-1683018247626/1679327122574-Socialmediatrends.png", content: "Top 10 social media trends to add to your strategy" },
+        { id: 2, image: "https://fiverr-res.cloudinary.com/f_auto,q_auto/v1/attachments/generic_asset/asset/12fb4aa47ab0418009abf26a668c3068-1683117055632/1682363404403-Tiktokvsinta_howtochoosethebestoneforyourbrand_.jpeg", content: "Tiktok vs. Instagram: how to choose the best platform for your brand" },
+        { id: 3, image: "https://fiverr-res.cloudinary.com/f_auto,q_auto/v1/attachments/generic_asset/asset/6826e34b1484e1335aa97b54071def3f-1686782493289/1685545819018-9UGCStrategiesThatCanSkyrocketYourEngagementandConversions.jpg", content: "9 UGC strategies to skyrocket engagement and conversions" }
+    ])
 
     useEffect(() => {
         if (window.innerWidth <= 1150 && window.innerWidth >= 700) {
@@ -62,50 +44,25 @@ const PriceComponent: FC = () => {
             setIsMobileMD(false);
             setIsMobileSM(false);
             setIsMobileXS(false);
-            setSliderCount(4);
+            setSliderCount(3);
         }
     }, [isMobileMD, isMobileSM, isMobileXS, sliderCount])
 
     return (
         <section className="bg-white dark:bg-white">
-            <div className="max-w-screen-xl px-4 py-4 mx-auto lg:py-24 lg:px-6">
+            <div className="max-w-screen-xl px-4 py-4 mx-auto lg:px-6">
                 <Swiper spaceBetween={10} slidesPerView={sliderCount}>
                     {
-                        price.map((item) => (
+                        footerComponent.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border shadow-lg
-                                    border-[#581C87] rounded-lg shadow dark:border-[#581C87] xl:p-8 dark:bg-white dark:text-white">
-                                    <div className="flex items-center justify-center flex-col my-8">
-                                        <span className="mr-2 text-5xl font-extrabold text-black">{item.price}</span>
-                                        <span className="text-black dark:text-black py-2">{item.plantype}</span>
-                                        <span className="py-4 text-black">One time fee for one listing or task highlighted in search results.</span>
+                                <div className="w-full lg:flex-row md:flex-row sm:flex-col flex-col items-center cursor-pointer" key={item.id}>
+                                    <div className="w-full flex flex-col hover:opacity:80">
+                                        <img className="" src={item.image} alt="" />
+                                        <div className="w-full flex justify-center items-center mt-2 text-base">{item.content}</div>
                                     </div>
-                                    <ul role="list" className="mb-4 space-y-2 text-left">
-                                        <li className="flex items-center space-x-2 text-black text-center justify-center">
-                                            <span>20 Listing</span>
-                                        </li>
-                                        <li className="flex items-center space-x-2 text-black text-center justify-center">
-                                            <span>50 Days Visibility</span>
-                                        </li>
-                                        <li className="flex items-center space-x-2 text-black text-center justify-center">
-                                            <span>Highlighted in Search Results</span>
-                                        </li>
-                                        <li className="flex items-center space-x-2 text-black text-center justify-center">
-                                            <span>10 Revisions</span>
-                                        </li>
-                                        <li className="flex items-center space-x-2 text-black text-center justify-center">
-                                            <span>9 Days Delivery Time</span>
-                                        </li>
-                                        <li className="flex items-center space-x-2 text-black text-center justify-center">
-                                            <span>Support 24/7</span>
-                                        </li>
-                                    </ul>
-                                    <a href="#"
-                                        className="text-white bg-[#581C87] hover:bg-purple-800 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Buy Now</a>
                                 </div>
                             </SwiperSlide>
                         ))
-
                     }
                 </Swiper>
             </div>

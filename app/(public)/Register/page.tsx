@@ -12,7 +12,7 @@ const Register: FC = () => {
 
     return (
         <div className="min-h-screen bg-white text-gray-900 flex justify-center">
-            <div className="max-w-screen-xl bg-white shadow sm:rounded-lg flex justify-center flex-1">
+            <div className="max-w-screen-xl bg-white shadow sm:rounded-lg flex justify-center flex-1 lg:mt-12 md:mt-12 sm:mt-18 mt-24">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                     <div className="flex flex-col items-center">
                         <h1 className="text-2xl xl:text-3xl font-extrabold">
@@ -142,7 +142,7 @@ const Register: FC = () => {
                                     placeholder="confirm"
                                 />
                                 <button
-                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                                    className="mt-5 tracking-wide font-semibold bg-[#581c87] text-gray-100 w-full py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                                 >
                                     <svg
                                         className="w-6 h-6 -ml-2"
@@ -161,7 +161,7 @@ const Register: FC = () => {
                                         Register
                                     </span>
                                 </button>
-                                <button onClick={Login} className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <button onClick={Login} className="mt-5 tracking-wide font-semibold bg-[#581c87] text-gray-100 w-full py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <p>Already Registed?</p>
                                     <span className="ml-3">
                                         Login Now

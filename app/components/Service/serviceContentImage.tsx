@@ -81,7 +81,7 @@ const ServiceImageContent: FC = () => {
 
     return (
         <>
-            <main className="py-8 w-full bg-white lg:px-24 relative md:justify-center md:items-center sm:justify-center sm:items-center justify-center items-center border">
+            <main className="py-8 w-full bg-white lg:px-24 relative md:justify-center md:items-center sm:justify-center sm:items-center justify-center items-center">
                 <div className="relative lg:w-[65%] md:w-full sm:w-ful overflow-hidden rounded-md bg-gray-900 p-2 sm:p-4">
                     <div className="absolute right-5 top-5 z-10 rounded-full bg-gray-900 px-2 text-center text-sm text-white">
                         <span>{currentIndex}</span>/<span>{images.length}</span>
@@ -188,8 +188,6 @@ const ServiceImageContent: FC = () => {
                 </Swiper>
             </div>
         </>
-
-
     );
 }
 
