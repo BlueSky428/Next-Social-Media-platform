@@ -6,7 +6,7 @@ import InputComponent from "@/app/components/Instagram/inputComponent";
 import InstagramDownloader from "@/app/components/Instagram/instagramDownloader";
 import FAQ from "@/app/components/Section/faq";
 import ServiceCard from "@/app/components/Section/section";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 
 const InstagramIndex: FC = () => {
 
