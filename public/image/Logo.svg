@@ -114,7 +114,7 @@ const ServiceReview: FC = () => {
                 </div>
                 <div className={`lg:w-full h-auto py-4 lg:flex`} style={{ "display": isMobileMode ? "" : "none" }}>
                     <div className="flex flex-col w-full p-6 px-2 text-center text-gray-900 bg-white border shadow-lg
-                                border-[#581C87] rounded-lg shadow dark:border-[#581C87] xl:p-8 dark:bg-white dark:text-white">
+                                border-[#664481] rounded-lg shadow dark:border-[#664481] xl:p-8 dark:bg-white dark:text-white">
                         <div className="flex items-center justify-center flex-col">
                             <span className="mr-2 text-5xl font-extrabold text-black">$79</span>
                         </div>
@@ -143,12 +143,12 @@ const ServiceReview: FC = () => {
                             </div>
                         </div>
                         <a href=""
-                            className="text-white bg-[#581C87] hover:bg-purple-800 focus:ring-4 
+                            className="text-white bg-[#664481] hover:bg-purple-800 focus:ring-4 
                                     focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-6 
                                     text-center dark:text-white">Buy Now $79</a>
                     </div>
                     <div className="flex flex-col md:mt-0 sm:mt-0 mt-2 w-full p-6 px-2 text-center text-gray-900 bg-white border shadow-lg
-                                border-[#581C87] rounded-lg shadow dark:border-[#581C87] dark:bg-white dark:text-white">
+                                border-[#664481] rounded-lg shadow dark:border-[#664481] dark:bg-white dark:text-white">
                         <div className="flex items-center justify-center flex-col">
                             <span className="mr-2 text-xl font-extrabold text-black">About The Seller</span>
                         </div>
@@ -185,7 +185,7 @@ const ServiceReview: FC = () => {
                             </div>
                         </div>
                         <a href=""
-                            className="text-white bg-[#581C87] hover:bg-purple-800 focus:ring-4 
+                            className="text-white bg-[#664481] hover:bg-purple-800 focus:ring-4 
                                     focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-6 
                                     text-center dark:text-white">Contact me</a>
                     </div>

@@ -1,9 +1,6 @@
 "use client"
-import { FC, useState, useEffect } from "react";
-
-interface StarRatingProps {
-    totalStars?: number;
-}
+import { reviewData } from "@/app/data/Freelancer/freelancerData";
+import { FC, useState } from "react";
 
 type Review = {
     id: number,
@@ -43,40 +40,7 @@ const UserReview: FC = () => {
         setPrice(radioButton[id].price);
     }
 
-    const [review, setReview] = useState<Review[]>(
-        [
-            {
-                id: 0,
-                category: "5 star",
-                reviewPercent: "90%",
-                reviewCount: "(7, 100)"
-            },
-            {
-                id: 1,
-                category: "4 star",
-                reviewPercent: "80%",
-                reviewCount: "(5,100)"
-            },
-            {
-                id: 2,
-                category: "3 star",
-                reviewPercent: "50%",
-                reviewCount: "(3, 200)"
-            },
-            {
-                id: 3,
-                category: "2 star",
-                reviewPercent: "10%",
-                reviewCount: "(306)"
-            },
-            {
-                id: 4,
-                category: "1 star",
-                reviewPercent: "5%",
-                reviewCount: "(1)"
-            }
-        ]
-    )
+    const [review, setReview] = useState<Review[]>(reviewData)
 
     return (
         <div className="mx-auto max-w-screen-xl lg:px-4 md:px-4 sm:px-0 px-0 w-full flex items-center lg:mt-0 md:mt-14 sm:mt-20 mt-28">
@@ -148,7 +112,6 @@ const UserReview: FC = () => {
                                 </div>
                             ))
                         }
-
                     </div>
                     <div className="lg:w-[50%] lg:h-[250px] lg:flex lg:flex-col 
                                     md:w-[40%] md:h-[250px] 

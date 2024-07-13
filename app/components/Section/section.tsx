@@ -15,7 +15,7 @@ const ServiceCard: FC = () => {
             </div>
             <div className="grid gap-14 md:grid-cols-3 md:gap-5 lg:w-1/2 md:w-full">
                 <div className="rounded-xl bg-white p-6 text-center shadow-xl">
-                    <div className="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-[#581C87] shadow-lg shadow-[#581C87]">
+                    <div className="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-[#664481] shadow-lg shadow-[#664481]">
                         <FontAwesomeIcon icon={faUsers} color="white" style={{ "fontSize": "20px" }} />
                     </div>
                     <h1 className="text-darken mb-3 text-xl font-medium w-full">Instant delivery</h1>
@@ -24,7 +24,7 @@ const ServiceCard: FC = () => {
                     </p>
                 </div>
                 <div className="rounded-xl bg-white p-6 text-center shadow-xl">
-                    <div className="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-[#581C87] shadow-lg shadow-[#581C87]">
+                    <div className="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-[#664481] shadow-lg shadow-[#664481]">
                         <FontAwesomeIcon icon={faEye} color="white" style={{ "fontSize": "20px" }} />
                     </div>
                     <h1 className="text-darken mb-3 text-xl font-medium">100% real. Always.</h1>
@@ -33,7 +33,7 @@ const ServiceCard: FC = () => {
                     </p>
                 </div>
                 <div className="rounded-xl bg-white p-6 text-center shadow-xl">
-                    <div className="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-[#581C87] shadow-lg shadow-[#581C87]">
+                    <div className="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-[#664481] shadow-lg shadow-[#664481]">
                         <FontAwesomeIcon icon={faHeart} color="white" style={{ "fontSize": "20px" }} />
                     </div>
                     <h1 className="text-darken mb-3 text-xl font-medium">Cheapest prices</h1>

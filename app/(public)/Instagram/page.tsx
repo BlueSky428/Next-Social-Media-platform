@@ -1,4 +1,6 @@
 "use client"
+import Footer from "@/app/components/Footer/page";
+import Header from "@/app/components/Header/page";
 import InstagramReview from "@/app/components/Instagram/InstagramReview";
 import CategoryButton from "@/app/components/Instagram/category";
 import ExplainInstagramDownloader from "@/app/components/Instagram/exlpain";
@@ -14,6 +16,7 @@ const InstagramIndex: FC = () => {
 
     return (
         <>
+            <Header />
             <div className="relative flex md:justify-center md:items-center sm:justify-center sm:items-center min-h-screen flex-col overflow-hidden bg-white sm:py-12">
                 <InstagramDownloader type={categorybutton} />
                 <CategoryButton setContent={setCategoryButton} />
@@ -23,6 +26,7 @@ const InstagramIndex: FC = () => {
             </div>
             <InstagramReview />
             <FAQ />
+            <Footer />
         </>
     )
 }

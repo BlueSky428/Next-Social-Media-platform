@@ -114,8 +114,6 @@ const Payment: FC = () => {
                                         <label htmlFor="date" className="mb-3 block text-base font-medium text-[#07074D]">
                                             Date <FontAwesomeIcon icon={faLock} color="green" className="px-1" />
                                         </label>
-                                        {/* <input type="text" placeholder="MM/YY" onChange={handleDate} value={date}
-                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" /> */}
                                         <input
                                             type="month"
                                             id="month-picker"
@@ -147,7 +145,7 @@ const Payment: FC = () => {
                             </div>
                             <div>
                                 <button
-                                    className="hover:shadow-form w-full flex justify-center items-center rounded-md bg-[#581c87] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                    className="hover:shadow-form w-full flex justify-center items-center rounded-md bg-[#664481] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                                     Pay {price}
                                 </button>
                             </div>

@@ -1,9 +1,11 @@
-import { faFacebook, faInstagram, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
+"use client"
+import { faFacebook, faInstagram, faTiktok, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { FC } from "react";
 
 const Footer: FC = () => {
+
     return (
         <footer className="w-full bg-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -16,10 +18,11 @@ const Footer: FC = () => {
                             Trusted in more than 100 countries & 5 million customers. Follow us social media.
                         </div>
                         <div className="w-full flex justify-start items-center py-5">
-                            <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faInstagram} style={{ "color": "white", "width": "30px" }} /></a>
-                            <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faFacebook} style={{ "color": "white" }} /></a>
-                            <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faTiktok} style={{ "color": "white" }} /></a>
-                            <a href="" className="w-9 h-9 rounded-full bg-[#581C87] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faYoutube} style={{ "color": "white" }} /></a>
+                            <a href="" className="w-9 h-9 rounded-full bg-[#664481] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faInstagram} style={{ "color": "white", "width": "30px" }} /></a>
+                            <a href="" className="w-9 h-9 rounded-full bg-[#664481] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faFacebook} style={{ "color": "white" }} /></a>
+                            <a href="" className="w-9 h-9 rounded-full bg-[#664481] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faTiktok} style={{ "color": "white" }} /></a>
+                            <a href="" className="w-9 h-9 rounded-full bg-[#664481] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faYoutube} style={{ "color": "white" }} /></a>
+                            <a href="" className="w-9 h-9 rounded-full bg-[#664481] border flex justify-center items-center px-4 mr-2"><FontAwesomeIcon icon={faXTwitter} style={{ "color": "white" }} /></a>
                         </div>
                     </div>
                     <div className="lg:mx-auto text-left ">
@@ -36,10 +39,8 @@ const Footer: FC = () => {
                         <h4 className="text-lg text-gray-900 font-medium mb-7">Services</h4>
                         <ul className="text-sm  transition-all duration-500">
                             <li className="mb-6"><a href="/" className="text-gray-600 hover:text-gray-900">Marketplace</a></li>
-                            <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Instagram Services</a></li>
-                            <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">TikTok Services</a></li>
-                            <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Facebook Services</a></li>
-                            <li><a href="/" className=" text-gray-600 hover:text-gray-900">Youtube Services</a></li>
+                            <li className="mb-6"><a href="/" className=" text-gray-600 hover:text-gray-900">Publish a Projects</a></li>
+                            <li className="mb-6"><a href="/Instagramaccount" target="/Instagramaccount" className=" text-gray-600 hover:text-gray-900">Social Media Accounts</a></li>
                         </ul>
                     </div>
                     <div className="lg:mx-auto text-left ">

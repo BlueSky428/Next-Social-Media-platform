@@ -37,7 +37,7 @@ const InstagramReview: FC = () => {
                                     fill="transparent"
                                 ></circle>
                                 <circle
-                                    className="text-indigo-500 progress-ring__circle stroke-current" style={{ "color": "#581C87" }}
+                                    className="text-indigo-500 progress-ring__circle stroke-current" style={{ "color": "#664481" }}
                                     strokeWidth="7"
                                     strokeLinecap="round"
                                     cx="50"
@@ -103,14 +103,14 @@ const InstagramReview: FC = () => {
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                         </svg>
                     </div>
-                    <div className="lg:absolute lg:right-10 lg:text-sm sm:text-xs p-5 rounded-lg text-white bg-[#581C87] 
-                                    cursor-pointer hover:bg-white hover:text-[#581C87] border border-[#581C87] transition  duration:300 hover:shadow-lg">
+                    <div className="lg:absolute lg:right-10 lg:text-sm sm:text-xs p-5 rounded-lg text-white bg-[#664481] 
+                                    cursor-pointer hover:bg-white hover:text-[#664481] border border-[#664481] transition  duration:300 hover:shadow-lg">
                         Submit your reviews
                     </div>
                 </div>
                 <div className="lg:w-3/4 md:w-3/4 w-full lg:h-52 md:h-44 sm:h-44 lg:flex md:flex sm:flex flex flex-col justify-center items-center bg-white relative">
                     <AwesomeSlider className="h-full bg-white">
-                        <div className="w-full h-full lg:flex md:flex flex flex-col sm:flex justify-center items-center bg-[#581C87]">
+                        <div className="w-full h-full lg:flex md:flex flex flex-col sm:flex justify-center items-center bg-[#664481]">
                             <div className="text-2xl text-white">Trustpoilt</div>
                             <div className="text-xl text-white">Excellent</div>
                             <div className="flex items-center justify-center py-3">
@@ -162,7 +162,7 @@ const InstagramReview: FC = () => {
                             </div>
                             <div className="text-base text-white">Based on 256 reviews</div>
                         </div>
-                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#581C87]">
+                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#664481]">
                             <div className="lg:w-full sm:w-full w-4/5 lg:h-3/12 lg:flex flex flex-col justify-center items-center relative">
                                 <div className="lg:text-xl font-bold py-1">Alain</div>
                                 <div className="flex items-center justify-center py-1">
@@ -221,7 +221,7 @@ const InstagramReview: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#581C87]">
+                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#664481]">
                             <div className="lg:w-full sm:w-full w-4/5 lg:h-3/12 lg:flex flex flex-col justify-center items-center relative">
                                 <div className="lg:text-xl font-bold py-1">Alain</div>
                                 <div className="flex items-center justify-center py-1">
@@ -280,7 +280,7 @@ const InstagramReview: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#581C87]">
+                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#664481]">
                             <div className="lg:w-full sm:w-full w-4/5 lg:h-3/12 lg:flex flex flex-col justify-center items-center relative">
                                 <div className="lg:text-xl font-bold py-1">Alain</div>
                                 <div className="flex items-center justify-center py-1">
@@ -339,7 +339,7 @@ const InstagramReview: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#581C87]">
+                        <div className="flex-col sw-full h-full lg:flex md:flex sm:flex flex justify-center items-center bg-white lg:px-20 sm:px-5 border border-[#664481]">
                             <div className="lg:w-full sm:w-full w-4/5 lg:h-3/12 lg:flex flex flex-col justify-center items-center relative">
                                 <div className="lg:text-xl font-bold py-1">Alain</div>
                                 <div className="flex items-center justify-center py-1">

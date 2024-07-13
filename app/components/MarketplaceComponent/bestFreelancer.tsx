@@ -157,8 +157,28 @@ const BestFreelancer: FC = () => {
                 <h2 className="font-bold text-2xl text-black-900 py-4">Best Freelancers</h2>
                 <Swiper
                     spaceBetween={5}
-                    slidesPerView={sliderCount}
                     pagination={{ clickable: true }}
+                    breakpoints={{
+                        425: {
+                            slidesPerView: 1,
+                        },
+                        550: {
+                            slidesPerView: 2,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        796: {
+                            slidesPerView: 3,
+                        },
+                        // when window width is >= 1024px
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                    }}
                 >
                     {
                         freelancer.map((item) => (

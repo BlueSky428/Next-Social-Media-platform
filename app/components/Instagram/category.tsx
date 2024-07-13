@@ -35,7 +35,7 @@ const CategoryButton: FC<CategoryButtonProps> = ({ setContent }) => {
                     <button
                         key={item.id}
                         onClick={() => categoryButtonClick(item.id)}
-                        className={`w-auto hover:shadow-form rounded-md ${item.active ? "bg-[#581C87] text-white" : "bg-white border border-[#581C87] text-[#581C87]"
+                        className={`w-auto hover:shadow-form rounded-md ${item.active ? "bg-[#664481] text-white" : "bg-white border border-[#664481] text-[#664481]"
                             } text-center lg:px-2 md:px-2 sm:px-2 px-2 py-3 text-xs outline-none flex justify-center items-center`}
                     >
                         {item.content}

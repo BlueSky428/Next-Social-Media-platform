@@ -7,12 +7,16 @@ import Reviews from "@/app/components/Reviews/page";
 import FAQ from "@/app/components/Section/faq";
 import MainDashboardComponent from "@/app/components/Dashboard/page";
 import serviceContext from "@/app/services/serviceContext";
+import Guide from "@/app/components/Dashboard/guied";
+import Header from "@/app/components/Header/page";
+import Footer from "@/app/components/Footer/page";
 
 const Dashboard: FC = () => {
 
     const statusContext = useContext(serviceContext);
     const [serviceTitle, setServiceTitle] = useState<string>('Instagram');
     const [serviceContent, setServiceContent] = useState<string>("Followers");
+    const [isInstagramShow, setIsInstagramShow] = useState<boolean>(false);
 
     useEffect(() => {
         if (statusContext?.serviceStatus) {
@@ -24,12 +28,15 @@ const Dashboard: FC = () => {
 
     return (
         <>
-            <MainDashboardComponent Title={serviceTitle} Content={serviceContent} />
+            <Header />
+            <MainDashboardComponent Title={serviceTitle} Content={serviceContent} setIsShow={setIsInstagramShow} />
             <ServiceCard />
             <LeadershipSection />
             <Landing />
             <Reviews />
             <FAQ />
+            <Guide isShow={isInstagramShow} />
+            <Footer />
         </>
     )
 }

@@ -1,6 +1,7 @@
 "use client"
 import { FC, useState } from "react";
-import Pagination from "./pagination";
+import Pagination from "../pagination";
+import { userReviewData, sellerResponseData } from "@/app/data/Freelancer/freelancerData";
 
 type Date = {
     year: number,
@@ -35,71 +36,9 @@ const ReviewCard: FC = () => {
 
     const date = new Date();
 
-    const [userReview, setUserReview] = useState<UserReview[]>([
-        {
-            id: 0,
-            useravatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-            username: "John Powell",
-            countryflag: "/image/icon/flag.png",
-            country: "United Kingdom",
-            date: {
-                year: 2024,
-                month: 4,
-                day: 28
-            },
-            title: "Sapien consequat eleifend!",
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        },
-        {
-            id: 1,
-            useravatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-            username: "John Powell",
-            countryflag: "/image/icon/flag.png",
-            country: "United Kingdom",
-            date: {
-                year: 2024,
-                month: 3,
-                day: 10
-            },
-            title: "Sapien consequat eleifend!",
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        },
-        {
-            id: 2,
-            useravatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-            username: "John Powell",
-            countryflag: "/image/icon/flag.png",
-            country: "United Kingdom",
-            date: {
-                year: 2024,
-                month: 2,
-                day: 28
-            },
-            title: "Sapien consequat eleifend!",
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        },
-        {
-            id: 3,
-            useravatar: "https://demoapus1.com/freeio/wp-content/uploads/2022/10/5-150x150.jpg",
-            username: "John Powell",
-            countryflag: "/image/icon/flag.png",
-            country: "United Kingdom",
-            date: {
-                year: 2024,
-                month: 5,
-                day: 28
-            },
-            title: "Sapien consequat eleifend!",
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        }
-    ])
+    const [userReview, setUserReview] = useState<UserReview[]>(userReviewData)
 
-    const [sellerResponse, setSellerResponse] = useState<SellerResponse[]>([
-        { id: 0, username: "Hiper Rand", title: "Seller's Response", content: "Thank you, Jamie, for your detailed and positive review! I'm glad I could meet your expectations and help you clean up your Instagram account. It's great to hear that you found the initial analysis useful and decided to proceed with the full project. I’m glad that we’ll continue our work together over the next few months. Your trust and kind words mean a lot to me.", parentID: 0 },
-        { id: 1, username: "Hiper Rand", title: "Seller's Response", content: "Thank you, Mahri, for your kind words and positive review! It was a pleasure working with you over the past several months to help downsize your followers. I'm glad to hear you felt safe and secure throughout the process. Your cooperation and timely communication made it a smooth experience. Looking forward to potentially working together again in the future!", parentID: 1 },
-        { id: 2, username: "Hiper Rand", title: "Seller's Response", content: "Thank you, Lance, for your trust and positive feedback! I'm glad that you were satisfied with the service and communication. It's great to know there were no issues with Instagram during or after the process. I appreciate your kind words and look forward to assisting you again in the future.", parentID: 3 },
-        { id: 3, username: "Hiper Rand", title: "Seller's Response", content: "Thank you for your kind words! I'm glad to hear that you were satisfied with the communication and the quality of work. Your feedback is greatly appreciated and will help others feel confident in choosing my services. Looking forward to potentially working with you again!", parentID: 2 }
-    ])
+    const [sellerResponse, setSellerResponse] = useState<SellerResponse[]>(sellerResponseData)
 
     const handleSetReviewMark = (mark: string, id: number) => {
         setReviewID(id);
@@ -156,14 +95,14 @@ const ReviewCard: FC = () => {
                                     <div className="flex items-center">
                                         <span>Helplful?</span>
                                         <button className="flex items-center ml-6" onClick={() => handleSetReviewMark("Yes", userervew.id)}>
-                                            <svg className={`w-3 h-3 ${reviewMark === "Yes" && reviewID === userervew.id ? "text-red-600" : "text-black"}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <svg className={`w-3 h-3 ${reviewMark === "Yes" && reviewID === userervew.id ? "text-blue-600" : "text-black"}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                 <path d="M11 0h1v3l3 7v8a2 2 0 0 1-2 2H5c-1.1 0-2.31-.84-2.7-1.88L0 12v-2a2 2 0 0 1 2-2h7V2a2 2 0 0 1 2-2zm6 10h3v10h-3V10z" />
                                             </svg>
-                                            <span className={`ml-2 ${reviewMark === "Yes" && reviewID === userervew.id ? "text-red-600" : "text-black"}`}>56</span>
+                                            <span className={`ml-2 ${reviewMark === "Yes" && reviewID === userervew.id ? "text-blue-600" : "text-black"}`}>56</span>
                                         </button>
                                         <button className="flex items-center ml-4" onClick={() => handleSetReviewMark("No", userervew.id)}>
-                                            <svg className={`w-3 h-3 ${reviewMark === "No" && reviewID === userervew.id ? "text-blue-600" : "text-black"}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11 20a2 2 0 0 1-2-2v-6H2a2 2 0 0 1-2-2V8l2.3-6.12A3.11 3.11 0 0 1 5 0h8a2 2 0 0 1 2 2v8l-3 7v3h-1zm6-10V0h3v10h-3z" /></svg>
-                                            <span className={`ml-2 ${reviewMark === "No" && reviewID === userervew.id ? "text-blue-600" : "text-black"}`}>10</span>
+                                            <svg className={`w-3 h-3 ${reviewMark === "No" && reviewID === userervew.id ? "text-red-600" : "text-black"}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11 20a2 2 0 0 1-2-2v-6H2a2 2 0 0 1-2-2V8l2.3-6.12A3.11 3.11 0 0 1 5 0h8a2 2 0 0 1 2 2v8l-3 7v3h-1zm6-10V0h3v10h-3z" /></svg>
+                                            <span className={`ml-2 ${reviewMark === "No" && reviewID === userervew.id ? "text-red-600" : "text-black"}`}>10</span>
                                         </button>
                                         <span className={`text-xs ml-4 ${reviewMark === "Yes" && reviewID === userervew.id ? "" : "hidden"}`}>You found this review helpful</span>
                                     </div>
@@ -194,7 +133,7 @@ const ReviewCard: FC = () => {
                                     }
                                 </div>
                             </div>
-                            <div className="lg:w-[30%] h-full flex flex-col justify-center items-center">
+                            <div className="lg:w-[30%] md:w-[30%] sm:w-full w-full h-full flex flex-col justify-center items-center px-4">
                                 <div className="py-4 w-full flex items-center">
                                     <span className="font-bold text-sm text-gray-500">Ordered:</span>
                                 </div>

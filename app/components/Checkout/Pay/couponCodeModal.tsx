@@ -8,16 +8,13 @@ type CouponModal = {
 const CouponCodeModal: FC<CouponModal> = ({ isOpen, onClose }) => {
     return (
         <div className={`${isOpen ? "w-full h-screen flex justify-center items-center fixed -mt-[5.5rem] bg-[rgba(0,0,0,0.2)] z-50" : "hidden"}`}>
-            <div className="fixed z-10 inset-0 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div className="fixed z-10 inset-0 overflow-y-auto lg:mt-0 md:mt-0 sm:mt-0 -mt-52" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                 <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <div className="fixed inset-0 transition-opacity" aria-hidden="true">
                         <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
                     </div>
-
-                    <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-
-                    <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                        <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform animate-slide-in transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div className="bg-white px-4 pt-5 pb-4 sm:p-6">
                             <div className="sm:flex sm:items-start">
                                 <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
                                     <svg width="64px" height="64px" viewBox="0 0 24 24" className="h-6 w-6 text-blue-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#2563eb" strokeWidth="0.36">
@@ -51,7 +48,7 @@ const CouponCodeModal: FC<CouponModal> = ({ isOpen, onClose }) => {
                         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                             <button
                                 type="button"
-                                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#581c87] text-base font-medium text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#664481] text-base font-medium text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                             >
                                 Submit
                             </button>

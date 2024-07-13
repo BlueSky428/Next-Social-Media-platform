@@ -1,10 +1,18 @@
 "use client"
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward } from "@fortawesome/free-solid-svg-icons/faForward";
 import { useRouter } from "next/navigation";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
+
+// import required modules
+import { EffectCoverflow, Navigation, Pagination, FreeMode } from 'swiper/modules';
 
 type SkillCategory = {
     id: number,
@@ -162,15 +170,37 @@ const ExpertFreelancer: FC = () => {
             <div className="mx-auto max-w-screen-xl px-4 w-full justify-center bg-white">
                 <h2 className="font-bold text-2xl text-black-900 py-4">Expert Freelancers</h2>
                 <Swiper
-                    spaceBetween={5}
-                    slidesPerView={sliderCount}
-                    pagination={{ clickable: true }}
+                    grabCursor={true}
+                    breakpoints={{
+                        425: {
+                            slidesPerView: 1,
+                        },
+                        550: {
+                            slidesPerView: 2,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        796: {
+                            slidesPerView: 3,
+                        },
+                        // when window width is >= 1024px
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                    }}
+                    loop={true}
+                    pagination={true}
+                    modules={[Navigation]}
                 >
                     {
                         freelancer.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 max-w-sm border cursor-pointer" onClick={() => freelancerInfo()}>
-                                    <div className="h-auto overflow-hidden">
+                                    <div className="h-auto overflow-hidden border-red-5000 border">
                                         <div className="h-auto overflow-hidden flex flex-col justify-center items-center py-6">
                                             <img src={item.avatar} className="w-24 h-24 rounded-full" alt="" />
                                             <h3 className="text-base font-medium text-center py-1">{item.role}</h3>
@@ -220,7 +250,7 @@ const ExpertFreelancer: FC = () => {
                         ))
                     }
                 </Swiper>
-                <div className="py-4 cursor-pointer font-bold text-[#581c87]">
+                <div className="py-4 cursor-pointer font-bold text-[#664481]">
                     <button className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300">
                         ALL FREELANCERS
                         <FontAwesomeIcon icon={faForward} className="px-2" />
@@ -228,7 +258,7 @@ const ExpertFreelancer: FC = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 

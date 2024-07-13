@@ -12,6 +12,12 @@ import { FC, useEffect, useState } from "react"
 import MediaCategory from "@/app/components/Checkout/Media/mediaCategory"
 import IncludeFollowers from "@/app/components/Checkout/Pay/followers"
 
+type AddCart = {
+    id: number
+    followerCount: number
+    price: number
+}
+
 const CheckOut: FC = () => {
 
     const [isSelectCheck, setIsSelectCheck] = useState<boolean>(false);
@@ -20,6 +26,10 @@ const CheckOut: FC = () => {
     const [nextStep, setNextStep] = useState<string>("Select");
     const [headerTitle, setHeaderTitle] = useState<string>("Select Instagram");
     const [headerContent, setHeaderContent] = useState<string>("Start by entering your instagram username.");
+    const [userName, setUsername] = useState<string>("");
+    const [packageName, setPackageName] = useState<string | undefined>("");
+
+    const [addCart, setAddCart] = useState<AddCart[]>();
 
     useEffect(() => {
         if (nextStep === "Select") {
@@ -42,20 +52,21 @@ const CheckOut: FC = () => {
                     <>
                         <PaymentSection />
                         <PaymentContent setSelectCheck={setIsSelectCheck} setPayCheck={setIsPayCheck}
-                            SelectCheck={isSelectCheck} setNextStep={setNextStep} NextStep={nextStep} setMediaCheck={setIsMediaCheck} MediaCheck={isMediaCheck} />
+                            SelectCheck={isSelectCheck} setNextStep={setNextStep} NextStep={nextStep} setMediaCheck={setIsMediaCheck} MediaCheck={isMediaCheck}
+                            setInstagramUsername={setUsername} setSelectPackage={setPackageName} />
                     </>
                 )
             case "Media":
                 return (
                     <>
                         <MediaSection setComponent={setNextStep} currentComponent={nextStep} setSelect={setIsSelectCheck} />
-                        <MediaCategory setComponent={setNextStep} setMediaCheck={setIsMediaCheck} />
+                        <MediaCategory setComponent={setNextStep} setMediaCheck={setIsMediaCheck} userName={userName} packageName={packageName} />
                     </>
                 )
             case "Pay":
                 return (
                     <>
-                        <AddCart setPrevious={setNextStep} currentComponent={nextStep} setMedia={setIsMediaCheck} />
+                        <AddCart setPrevious={setNextStep} currentComponent={nextStep} setMedia={setIsMediaCheck} setAddCart={setAddCart} />
                         <UserInfo />
                         <Setting />
                         <IncludeFollowers />

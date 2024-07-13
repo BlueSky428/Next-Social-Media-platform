@@ -16,7 +16,7 @@ const Landing: FC = () => {
             <div className="container mx-auto lg:px-16 px-3 items-center flex flex-col lg:flex-row lg:w-7/12 w-full">
                 <div className="lg:w-1/2">
                     <div className="lg:pl-10 xl:pl-10 flex flex-col justify-center md:w-full sm:w-full w-full">
-                        <h3 className="text-xl font-bold py-3  text-[#581C87]">
+                        <h3 className="text-xl font-bold py-3  text-[#664481]">
                             Increase Social Proof
                         </h3>
                         <p className="text-base font-light leading-relaxed">
@@ -25,7 +25,7 @@ const Landing: FC = () => {
                         </p>
                     </div>
                     <div className="lg:pl-10 xl:pl-10 flex flex-col justify-center">
-                        <h3 className="text-xl font-bold py-3  text-[#581C87]">
+                        <h3 className="text-xl font-bold py-3  text-[#664481]">
                             Drive Organic Growth
                         </h3>
                         <p className="text-base font-light leading-relaxed">
@@ -34,7 +34,7 @@ const Landing: FC = () => {
                         </p>
                     </div>
                     <div className="lg:pl-10 xl:pl-10 flex flex-col justify-center">
-                        <h3 className="text-xl font-bold py-3  text-[#581C87]">
+                        <h3 className="text-xl font-bold py-3  text-[#664481]">
                             Boost Exposure
                         </h3>
                         <p className="text-base font-light leading-relaxed">

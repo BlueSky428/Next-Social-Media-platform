@@ -28,7 +28,7 @@ const IncludeFollowers: FC = () => {
                             </select>
                         </div>
                         <div className="mt-4 px-2">
-                            <button type="button" className="bg-[#581c87] text-white px-4 py-2 rounded-lg hover:opacity-80 text-xs" >Apply to Cart</button>
+                            <button type="button" className="bg-[#664481] text-white px-4 py-2 rounded-lg hover:opacity-80 text-xs" >Apply to Cart</button>
                         </div>
                     </div>
                 </div>

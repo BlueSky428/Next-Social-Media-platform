@@ -2,6 +2,8 @@
 import { FC, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward } from "@fortawesome/free-solid-svg-icons/faForward";
 
@@ -100,21 +102,39 @@ const PopularCategory: FC = () => {
                 <h2 className="font-bold text-2xl text-gray-600 py-4">Most Popular Category</h2>
                 <Swiper
                     spaceBetween={20}
-                    slidesPerView={sliderCount}
-                    pagination={{ clickable: true }}
+                    breakpoints={{
+                        425: {
+                            slidesPerView: 1,
+                        },
+                        550: {
+                            slidesPerView: 2,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                        },
+                        // when window width is >= 1024px
+                        1024: {
+                            slidesPerView: 6,
+                        },
+                    }}
+                    navigation={true}
+                    modules={[Navigation]}
                 >
                     {
                         freelancer.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="relative flex flex-col shadow-md overflow-hidden hover:shadow-lg 
-                                                transition-all duration-300 max-w-sm border cursor-pointer">
-                                    <div className="h-auto overflow-hidden relative">
-                                        <div className="h-auto overflow-hidden flex justify-center">
-                                            <img src={item.img} className="w-full h-[250px] object-cover" alt="" />
+                                                transition-all duration-300 max-w-sm cursor-pointer">
+                                    <div className="overflow-hidden relative rounded-lg h-[250px] border-4 border-[#664481] bg-[#664481]">
+                                        <div className="h-[30%] flex justify-center flex-col">
+                                            <span className="text-xs p-1 text-white">{item.title}</span>
+                                            <span className="text-sm px-1 text-white font-bold">{item.content}</span>
                                         </div>
-                                        <div className="w-full h-[250px] overflow-hidden flex flex-col absolute bg-[rgba(0,0,0,0.2)] top-0 px-4 py-6">
-                                            <span className="text-xs py-2 text-white">{item.title}</span>
-                                            <span className="text-base text-white font-bold">{item.content}</span>
+                                        <div className="h-[70%] overflow-hidden flex justify-center rounded-lg">
+                                            <img src={item.img} className="w-full h-full object-cover rounded-lg" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -122,14 +142,15 @@ const PopularCategory: FC = () => {
                         ))
                     }
                 </Swiper>
-                <div className="py-4 cursor-pointer font-bold text-[#581c87]">
+
+                <div className="py-4 cursor-pointer font-bold text-[#664481]">
                     <button className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300">
                         ALL CATEGORIES
                         <FontAwesomeIcon icon={faForward} className="px-2" />
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

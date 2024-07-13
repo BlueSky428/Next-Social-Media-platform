@@ -177,7 +177,30 @@ const TrendingOffers: FC = () => {
                 <div className="lg:flex items-center justify-between mb-5">
                     <h2 className="font-bold text-2xl text-black">Trending Offers</h2>
                 </div>
-                <Swiper spaceBetween={20} slidesPerView={sliderCount} pagination={{ clickable: true }}>
+                <Swiper
+                    spaceBetween={20}
+                    breakpoints={{
+                        425: {
+                            slidesPerView: 1,
+                        },
+                        550: {
+                            slidesPerView: 2,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        796: {
+                            slidesPerView: 3,
+                        },
+                        // when window width is >= 1024px
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                    }}
+                    pagination={{ clickable: true }}>
                     {
                         popularServices.map((item) => (
                             <SwiperSlide key={item.id}>
@@ -248,7 +271,7 @@ const TrendingOffers: FC = () => {
                         ))
                     }
                 </Swiper>
-                <div className="py-4 cursor-pointer font-bold text-[#581c87]">
+                <div className="py-4 cursor-pointer font-bold text-[#664481]">
                     <button className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300">
                         ALL OFFERS
                         <FontAwesomeIcon icon={faForward} className="px-2" />

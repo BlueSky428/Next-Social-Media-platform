@@ -1,6 +1,7 @@
 "use client"
 import { FC, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { highQualityData, activeData, differenceData, buyItemsData, buyItemDetailData, buyItemCategoryData, followersBuyData, ReachData, ImpressionsData, SaveData, GuaranteeData } from "@/app/data/Dashboard/dashboardData";
 
 type HighQuality = {
     id: number,
@@ -21,19 +22,11 @@ type BuyItems = {
     id: number,
     Count: number,
     Type: string,
-    OldPrice: number,
-    NewPrice: number,
+    Price: number,
     Active: boolean,
     parentID: number,
     BestSelling: boolean,
     PlusButton: boolean
-}
-
-type BuyDetail = {
-    id: number,
-    image: any,
-    title: string,
-    count: number
 }
 
 type BuyCategory = {
@@ -44,9 +37,16 @@ type BuyCategory = {
     content: string
 }
 
+type BuyDetail = {
+    id: number,
+    image: any,
+    title: string,
+    count: number
+}
+
 type FollowersBuy = {
     id: number,
-    title: string,
+    title: number,
     content: string,
     plusImage: any,
     minuseImage: any,
@@ -61,10 +61,36 @@ type InstagramAutoLike = {
 
 type Services = {
     Title?: string,
-    Content?: string
+    Content?: string,
+    setIsShow?: any
 }
 
-const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
+type Increase = {
+    id: number
+    count: number
+}
+
+type Reach = {
+    id: number
+    count: number
+}
+
+type Impressions = {
+    id: number
+    count: number
+}
+
+type Saves = {
+    id: number
+    count: number
+}
+
+type Guarantee = {
+    id: number
+    day: number
+}
+
+const MainDashboardComponent: FC<Services> = ({ Title, Content, setIsShow }) => {
     const [buyMode, setBuyMode] = useState<boolean>(false);
     const [showModal, setShowModal] = useState(false);
     const [title, setTitle] = useState<string>("High Quality");
@@ -74,80 +100,41 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
     const [newPrice, setNewPrice] = useState<number>(4.34);
     const [oldPrice, setOldPrice] = useState<number>(8.68);
     const [buyItemDetailState, setButItemDetailState] = useState<boolean>(false);
+    const [reach, setReach] = useState<Reach[]>(ReachData);
+    const [impressions, setImpressions] = useState<Impressions[]>(ImpressionsData);
+    const [saves, setSaves] = useState<Saves[]>(SaveData);
+    const [guarantee, setGuarantee] = useState<Guarantee[]>(GuaranteeData);
+
+    const [increase, setIncreas] = useState<Increase[]>([
+        { id: 0, count: 5000 },
+        { id: 1, count: 10000 },
+        { id: 2, count: 15000 },
+        { id: 3, count: 25000 },
+        { id: 4, count: 50000 },
+    ])
 
     const router = useRouter();
 
     //High Quality followers
-    const [highQuality, setHighQuality] = useState<HighQuality[]>(
-        [
-            { id: 0, content: "High quality followers" },
-            { id: 1, content: "Fast Delivery" },
-            { id: 2, content: "30 days refills" },
-            { id: 3, content: "No password required" },
-            { id: 4, content: "24/7 support" },
-        ]
-    )
+    const [highQuality, setHighQuality] = useState<HighQuality[]>(highQualityData)
 
     //Active Followers
-    const [active, setActive] = useState<ActiveFollowers[]>(
-        [
-            { id: 0, content: "Real Active followers" },
-            { id: 1, content: "Guaranteed Delivery" },
-            { id: 2, content: "60 days refills" },
-            { id: 3, content: "No password required" },
-            { id: 4, content: "24/7 support" },
-        ]
-    )
+    const [active, setActive] = useState<ActiveFollowers[]>(activeData)
 
     //Difference
-    const [difference, setDifference] = useState<Difference[]>(
-        [
-            { id: 0, content: "These are followers with profile pictures but no additional posts, and the option for auto-filling is active within the warranty period." },
-            { id: 1, content: " New Active followers are for individuals who are dedicated to increasing their instagram following. These followers are guaranteed to have minimal to no drop-off." },
-        ]
-    )
+    const [difference, setDifference] = useState<Difference[]>(differenceData)
 
     //Buy Items
-    const [buyItems, setBuyItems] = useState<BuyItems[]>(
-        [
-            { id: 0, Count: 100, Type: "Followers", OldPrice: 8.68, NewPrice: 4.34, Active: true, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 1, Count: 500, Type: "Save55%", OldPrice: 23.31, NewPrice: 10.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 2, Count: 1000, Type: "Save58%", OldPrice: 46.40, NewPrice: 19.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 3, Count: 2500, Type: "Save60%", OldPrice: 93.73, NewPrice: 37.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 4, Count: 5000, Type: "Save80%", OldPrice: 374.95, NewPrice: 74.99, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 5, Count: 10000, Type: "Save67%", OldPrice: 568.15, NewPrice: 187.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 6, Count: 15000, Type: "Save70%", OldPrice: 824.97, NewPrice: 247.49, Active: false, parentID: 0, BestSelling: false, PlusButton: false },
-            { id: 7, Count: 25000, Type: "Save75%", OldPrice: 1679.96, NewPrice: 419.99, Active: false, parentID: 0, BestSelling: true, PlusButton: true }
-        ]
-    )
+    const [buyItems, setBuyItems] = useState<BuyItems[]>(buyItemsData)
 
     //Buy Detail
-    const [buyItemDetail, setBuyItemDetail] = useState<BuyDetail[]>(
-        [
-            { id: 0, image: "/image/icon/Likes.png", title: "Likes", count: 25 },
-            { id: 1, image: "/image/icon/Reach.png", title: "Reach", count: 25 },
-            { id: 2, image: "/image/icon/Impressions.png", title: "Impressions", count: 25 },
-            { id: 3, image: "/image/icon/Saves.png", title: "Saves", count: 25 },
-        ]
-    )
+    const [buyItemDetail, setBuyItemDetail] = useState<BuyDetail[]>(buyItemDetailData)
 
     //Buy Category
-    const [buyItemCategory, setBuyItemCategory] = useState<BuyCategory[]>(
-        [
-            { id: 0, plusImage: "/image/icon/plus.png", minuseImage: "/image/icon/minuse.png", count: 0, content: "React" },
-            { id: 1, plusImage: "/image/icon/plus.png", minuseImage: "/image/icon/minuse.png", count: 0, content: "Impressions" },
-            { id: 2, plusImage: "/image/icon/plus.png", minuseImage: "/image/icon/minuse.png", count: 0, content: "Saves" }
-        ]
-    )
+    const [buyItemCategory, setBuyItemCategory] = useState<BuyCategory[]>(buyItemCategoryData)
 
     //Followers Buy
-    const [followersBuy, setFollowersBuy] = useState<FollowersBuy[]>(
-        [
-            { id: 0, title: "30 Days", content: "Guarantee", plusImage: "/image/icon/plus.png", minuseImage: "/image/icon/minuse.png", },
-            { id: 1, title: "60 Days", content: "Guarantee", plusImage: "/image/icon/plus.png", minuseImage: "/image/icon/minuse.png", },
-            { id: 2, title: "90 Days", content: "Guarantee", plusImage: "/image/icon/plus.png", minuseImage: "/image/icon/minuse.png", },
-        ]
-    )
+    const [followersBuy, setFollowersBuy] = useState<FollowersBuy[]>(followersBuyData)
 
     const [instagramAutoLikeBtn, setInstagramAutoLikeBtn] = useState<InstagramAutoLike[]>(
         [
@@ -413,8 +400,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
 
     //Buy Item Press
     const handleBuyItemPress = (id: number) => {
-        setNewPrice(buyItems[id].NewPrice);
-        setOldPrice(buyItems[id].OldPrice);
+        setOldPrice(buyItems[id].Price);
 
         const temp = buyItems.map((item) =>
             item.id === id
@@ -422,18 +408,191 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                 : { ...item, Active: false }
         );
         setBuyItems(temp);
+
+        const Item = buyItemDetail.map((item) =>
+            item.title === "Likes"
+                ? { ...item, count: buyItems[id].Count }
+                : { ...item, count: item.count }
+        )
+
+        setBuyItemDetail(Item);
     }
 
     const subscribeToNewsletter = () => {
         setShowModal(false);
     };
 
+    const Increase = (id: number) => {
+        for (let i = 0; i < increase.length; i++) {
+            if (i < increase.length) {
+                if (increase[i].count === buyItems[id].Count && i + 1 <= increase.length - 1) {
+                    const temp = buyItems.map((item) => (
+                        item.id === id
+                            ? { ...item, Count: increase[i + 1].count }
+                            : { ...item, Count: item.Count }
+                    ))
+                    setBuyItems(temp);
+                }
+            }
+        }
+    }
+
+    const Decrease = (id: number) => {
+        for (let i = 0; i < increase.length; i++) {
+            if (i < increase.length) {
+                if (increase[i].count === buyItems[id].Count && i - 1 >= 0) {
+                    const temp = buyItems.map((item) => (
+                        item.id === id
+                            ? { ...item, Count: increase[i - 1].count }
+                            : { ...item, Count: item.Count }
+                    ))
+                    setBuyItems(temp);
+                }
+            }
+        }
+    }
+
+    const CategoryIncrease = (id: number, category: string, type: string) => {
+        if (type === "plus") {
+            if (category === "Reach") {
+                for (let i = 0; i < reach.length; i++) {
+                    if (reach[i].count === buyItemCategory[id].count && i + 1 <= reach.length - 1) {
+                        const temp = buyItemCategory.map((item) => (
+                            item.id === id
+                                ? { ...item, count: reach[i + 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemCategory(temp);
+                        const temp1 = buyItemDetail.map((item) => (
+                            item.title === "Reach"
+                                ? { ...item, count: reach[i + 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemDetail(temp1);
+                    }
+                }
+            } else if (category === "Impressions") {
+                for (let i = 0; i < impressions.length; i++) {
+                    if (impressions[i].count === buyItemCategory[id].count && i + 1 <= impressions.length - 1) {
+                        const temp = buyItemCategory.map((item) => (
+                            item.id === id
+                                ? { ...item, count: impressions[i + 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemCategory(temp);
+                        const temp1 = buyItemDetail.map((item) => (
+                            item.title === "Impressions"
+                                ? { ...item, count: impressions[i + 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemDetail(temp1);
+                    }
+                }
+            } else if (category === "Saves") {
+                for (let i = 0; i < saves.length; i++) {
+                    if (saves[i].count === buyItemCategory[id].count && i + 1 <= saves.length - 1) {
+                        const temp = buyItemCategory.map((item) => (
+                            item.id === id
+                                ? { ...item, count: saves[i + 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemCategory(temp);
+                        const temp1 = buyItemDetail.map((item) => (
+                            item.title === "Saves"
+                                ? { ...item, count: saves[i + 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemDetail(temp1);
+                    }
+                }
+            } else if (category === "Guarantee") {
+                for (let i = 0; i < guarantee.length; i++) {
+                    if (guarantee[i].day === followersBuy[id].title && i + 1 <= guarantee.length - 1) {
+                        const temp = followersBuy.map((item) => (
+                            item.id === id
+                                ? { ...item, title: guarantee[i + 1].day }
+                                : { ...item, title: item.title }
+                        ))
+                        setFollowersBuy(temp);
+                    }
+                }
+            }
+        } else {
+            if (category === "Reach") {
+                for (let i = 0; i < reach.length; i++) {
+                    if (reach[i].count === buyItemCategory[id].count && i - 1 >= 0) {
+                        const temp = buyItemCategory.map((item) => (
+                            item.id === id
+                                ? { ...item, count: reach[i - 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemCategory(temp);
+                        const temp1 = buyItemDetail.map((item) => (
+                            item.title === "Reach"
+                                ? { ...item, count: reach[i - 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemDetail(temp1);
+                    }
+                }
+            } else if (category === "Impressions") {
+                for (let i = 0; i < impressions.length; i++) {
+                    if (impressions[i].count === buyItemCategory[id].count && i - 1 >= 0) {
+                        const temp = buyItemCategory.map((item) => (
+                            item.id === id
+                                ? { ...item, count: impressions[i - 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemCategory(temp);
+                        const temp1 = buyItemDetail.map((item) => (
+                            item.title === "Impressions"
+                                ? { ...item, count: impressions[i - 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemDetail(temp1);
+                    }
+                }
+            } else if (category === "Saves") {
+                for (let i = 0; i < saves.length; i++) {
+                    if (saves[i].count === buyItemCategory[id].count && i - 1 >= 0) {
+                        const temp = buyItemCategory.map((item) => (
+                            item.id === id
+                                ? { ...item, count: saves[i - 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemCategory(temp);
+                        const temp1 = buyItemDetail.map((item) => (
+                            item.title === "Saves"
+                                ? { ...item, count: saves[i - 1].count }
+                                : { ...item, count: item.count }
+                        ))
+                        setBuyItemDetail(temp1);
+                    }
+                }
+            } else if (category === "Guarantee") {
+                for (let i = 0; i < guarantee.length; i++) {
+                    if (guarantee[i].day === followersBuy[id].title && i - 1 >= 0) {
+                        const temp = followersBuy.map((item) => (
+                            item.id === id
+                                ? { ...item, title: guarantee[i - 1].day }
+                                : { ...item, title: item.title }
+                        ))
+                        setFollowersBuy(temp);
+                    }
+                }
+            }
+        }
+    }
+
     useEffect(() => {
         setCategory(Title);
         setContentTitle(Content);
         if (Content !== "Followers") setButItemDetailState(true);
         else setButItemDetailState(false);
-    }, [Title, Content])
+
+        if (Title === "Instagram" && Content === "Followers") setIsShow(true);
+        else setIsShow(false)
+    }, [Title, Content, setIsShow])
 
     useEffect(() => {
         if (showModal) {
@@ -456,11 +615,11 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 and easily with just a few clicks. See our deals below!
                             </span>
                         </div>
-                        <div className="lg:w-[380px] bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full flex shadow-lg">
-                            <button onClick={() => ChangeBuyModePress(false)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-l-full px-4 py-2 ${buyMode ? "bg-white text-[#581C87]" : "bg-[#581C87] text-white"}`}>
+                        <div className="lg:w-[380px] md:w-[380px] sm:w-full w-full bg-gray-200 mt-6 text-sm text-gray-500 border-[#F3E8FF] rounded-full flex shadow-lg">
+                            <button onClick={() => ChangeBuyModePress(false)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-l-full lg:px-4 md:px-4 lg:py-4 md:py-2 text-xs py-2 ${buyMode ? "bg-white text-[#664481]" : "bg-[#664481] text-white"}`}>
                                 High Quality {contentTitle}
                             </button>
-                            <button onClick={() => ChangeBuyModePress(true)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-r-full px-4 py-2 ${buyMode ? "bg-[#581C87] text-white" : "bg-white text-[#581C87]"}`}>
+                            <button onClick={() => ChangeBuyModePress(true)} className={`w-2/4 flex justify-center items-center transition-colors duration-300 ease-in focus:outline-none focus:text-white-400 rounded-r-full lg:px-4 md:px-4 lg:py-4 md:py-2 text-xs py-2 ${buyMode ? "bg-[#664481] text-white" : "bg-white text-[#664481]"}`}>
                                 Active {contentTitle}
                             </button>
                         </div>
@@ -471,16 +630,16 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 buyItems.map((item) => (
                                     <div className="inline-block px-2 py-1 w-24 " key={item.id}>
                                         <div className="relative">
-                                            <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#581C87]" : "bg-[white]"}`}>
+                                            <button onClick={() => handleBuyItemPress(item.id)} type="button" className={`focus:outline-none text-white w-full h-full flex-col text-sm py-5 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border border-[#F3E8FF] duration-300 ${item.Active ? "bg-[#664481]" : "bg-[white]"}`}>
                                                 <span className={`font-bold ${item.Active ? "text-white" : "text-black"}`}>{item.Count}</span>
-                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#581C87]"}`}>{item.Type === "Followers" ? contentTitle : item.Type}</span>
+                                                <span className={`text-xs ${item.Active ? "text-white text-xs" : "text-[#664481]"}`}>{item.Type === "Followers" ? contentTitle : item.Type}</span>
                                             </button>
-                                            <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
-                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "right": "-13px" }}>
+                                            <button type="button" onClick={() => Increase(item.id)} className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
+                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#664481", "top": "26px", "right": "-13px" }}>
                                                 <img src="/image/icon/plus.png" alt="" />
                                             </button>
-                                            <button type="button" className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
-                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "26px", "left": "-13px" }}>
+                                            <button type="button" onClick={() => Decrease(item.id)} className={item.PlusButton ? "border flex justify-center items-center absolute rounded-full" : "hidden"}
+                                                style={{ "width": "25px", "height": "25px", "backgroundColor": "#664481", "top": "26px", "left": "-13px" }}>
                                                 <img src="/image/icon/minuse.png" alt="" />
                                             </button>
                                             <div className={item.Type === "Followers" || item.BestSelling === true ? "hidden" : "absolute"} style={{ "top": "-10px", "right": "-10px" }}>
@@ -501,16 +660,16 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                         buyItemDetailState ? (
                                             buyItemCategory.map((item) => (
                                                 <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative" key={item.id}>
-                                                    <div className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center duration-300 border-[#581C87] bg-[#581C87]`}>
+                                                    <div className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center duration-300 border-[#664481] bg-[#664481]`}>
                                                         <span className={`ml-0.5 text-white`}>{item.count}</span>
                                                         <span className={`ml-0.5 text-white`}>{item.content}</span>
                                                     </div>
-                                                    <div className="border flex justify-center items-center absolute rounded-full"
-                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "24px", "right": "15px" }}>
+                                                    <div className="border flex justify-center items-center absolute rounded-full" onClick={() => CategoryIncrease(item.id, item.content, "plus")}
+                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#664481", "top": "24px", "right": "15px" }}>
                                                         <img src={item.plusImage} alt="" />
                                                     </div>
-                                                    <div className="border flex justify-center items-center absolute rounded-full"
-                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "24px", "left": "15px" }}>
+                                                    <div className="border flex justify-center items-center absolute rounded-full" onClick={() => CategoryIncrease(item.id, item.content, "minuse")}
+                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#664481", "top": "24px", "left": "15px" }}>
                                                         <img src={item.minuseImage} alt="" />
                                                     </div>
                                                 </div>
@@ -518,16 +677,16 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                         ) : (
                                             followersBuy.map((item) => (
                                                 <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative" key={item.id}>
-                                                    <div className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center duration-300 border-[#581C87] bg-[#581C87]`}>
-                                                        <span className={`ml-0.5 text-white`}>{item.title}</span>
+                                                    <div className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center duration-300 border-[#664481] bg-[#664481]`}>
+                                                        <span className={`ml-0.5 text-white`}>{item.title} Days</span>
                                                         <span className={`ml-0.5 text-white`}>{item.content}</span>
                                                     </div>
-                                                    <div className={`border flex justify-center items-center absolute rounded-full ${item.id === 2 ? "" : "hidden"}`}
-                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "24px", "right": "15px" }}>
+                                                    <div onClick={() => CategoryIncrease(item.id, item.content, "plus")} className={`border flex justify-center items-center absolute rounded-full ${item.id === 2 ? "" : "hidden"}`}
+                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#664481", "top": "24px", "right": "15px" }}>
                                                         <img src={item.plusImage} alt="" />
                                                     </div>
-                                                    <div className={`border flex justify-center items-center absolute rounded-full ${item.id === 2 ? "" : "hidden"}`}
-                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#581C87", "top": "24px", "left": "15px" }}>
+                                                    <div onClick={() => CategoryIncrease(item.id, item.content, "minuse")} className={`border flex justify-center items-center absolute rounded-full ${item.id === 2 ? "" : "hidden"}`}
+                                                        style={{ "width": "25px", "height": "25px", "backgroundColor": "#664481", "top": "24px", "left": "15px" }}>
                                                         <img src={item.minuseImage} alt="" />
                                                     </div>
                                                 </div>
@@ -537,17 +696,17 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 </div>
                                 <div className="lg:w-full md:w-full sm:w-full lg:flex justify-center items-center py-5">
                                     <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative">
-                                        <button type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-white`}>
-                                            <span className="ml-0.5 text-[#581C87]">Free Trial 25 {contentTitle}</span>
+                                        <button type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#664481] bg-white`}>
+                                            <span className="ml-0.5 text-[#664481]">Free Trial 25 {contentTitle}</span>
                                         </button>
                                     </div>
                                     <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative">
-                                        <div className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-white`}>
-                                            <span className="ml-0.5 text-[#581C87]">$359.56</span>
+                                        <div className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#664481] bg-white`}>
+                                            <span className="ml-0.5 text-[#664481]">$359.56</span>
                                         </div>
                                     </div>
                                     <div className="inline-block lg:w-4/12 sm:w-1/3 w-full px-2 py-1 relative">
-                                        <button onClick={() => router.push("/Checkout")} type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#581C87] bg-[#581C87]`}>
+                                        <button onClick={() => router.push("/Checkout")} type="button" className={`w-full flex justify-center flex-col focus:outline-none text-sm py-2.5 px-4 rounded-md hover:bg-opacity-90 hover:shadow-lg flex items-center border duration-300 border-[#664481] bg-[#664481]`}>
                                             <span className="ml-0.5 text-white">Buy Now</span>
                                         </button>
                                     </div>
@@ -560,7 +719,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                             buyItemDetailState ? (
                                                 <>
                                                     <div className="lg:w-full md:w-5/12 flex justify-center items-center">
-                                                        <div className="w-1/4 flex justify-center items-center font-bold text-[#581C87] text-xl">100%</div>
+                                                        <div className="w-1/4 flex justify-center items-center font-bold text-[#664481] text-xl">100%</div>
                                                         <div className="lg:w-3/4 md:w-3/4 sm:w-3/4 w-full p-1 flex justify-center items-center flex-col">
                                                             <span className="lg:text-xs md:text-sm sm:text-xs text-sm font-bold">Chance to reach explore page</span>
                                                             <span className="lg:text-xs md:text-sm sm:text-xs text-xs">Increase to improve chances.</span>
@@ -573,8 +732,8 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                                                     <div className="lg:w-full md:w-full flex justify-center items-center">
                                                                         <img src={item.image} className="w-10 h-10" alt="" />
                                                                     </div>
-                                                                    <div className="w-full flex justify-center items-center text-[#581C87] text-sm">{item.title}</div>
-                                                                    <div className="w-full flex justify-center items-center text-[#581C87] text-sm font-bold">{item.count}</div>
+                                                                    <div className="w-full flex justify-center items-center text-[#664481] text-sm">{item.title}</div>
+                                                                    <div className="w-full flex justify-center items-center text-[#664481] text-sm font-bold">{item.count}</div>
                                                                 </div>
                                                             ))
                                                         }
@@ -582,9 +741,9 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <div className="lg:w-full md:w-5/12 lg:h-full flex justify-center items-center mb-8">
-                                                        <div className="lg:w-3/4 md:w-3/4 sm:w-3/4 w-full p-1 flex justify-center items-center flex-col">
-                                                            <span className="lg:text-base md:text-sm sm:text-base text-sm font-bold text-[#581C87]">
+                                                    <div className="lg:w-full md:w-5/12 lg:h-full flex justify-center items-center">
+                                                        <div className="lg:w-full md:w-3/4 sm:w-3/4 w-full p-1 flex justify-center items-center flex-col">
+                                                            <span className="lg:text-sm md:text-sm sm:text-sm text-sm font-bold text-[#664481]">
                                                                 Please choose the guarantee to be refilled with any number of followers in case of an Instagram update.
                                                             </span>
                                                         </div>
@@ -599,6 +758,7 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                     </div>
                 </div>
             </div>
+
             <div className="flex items-center justify-center">
                 <div>
                     {showModal && (
@@ -607,8 +767,8 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                 <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
                             </div>
                             <div className={`fixed z-10 inset-0 overflow-y-auto ${showModal ? "animate-slide-in" : "animate-slide-out"}`} aria-modal="true" role="dialog" aria-labelledby="modal-headline">
-                                <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                    <div className="border w-64 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" style={{ "marginTop": "80px" }}>
+                                <div className="flex items-end justify-center min-h-screen pt-4 px-4 text-center sm:block sm:p-0">
+                                    <div className="border w-64 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full w-full" style={{ "marginTop": "80px" }}>
                                         <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-2">
                                             <div className="sm:flex sm:items-start flex flex-col">
                                                 <div className="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -622,15 +782,15 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                                             title === "High Quality followers" ? (
                                                                 highQuality.map((item) => (
                                                                     <div className="w-full flex items-center mt-2" key={item.id}>
-                                                                        <img src="/image/icon/tick.png" className="w-5 h-5" alt="" />
-                                                                        <span className="text-sm cursor-pointer">{item.content}</span>
+                                                                        <img src="/image/icon/tick.png" className="w-4 h-4" alt="" />
+                                                                        <span className="text-xs cursor-pointer px-1">{item.content}</span>
                                                                     </div>
                                                                 ))
                                                             ) : (
                                                                 active.map((item) => (
                                                                     <div className="w-full flex items-center mt-2" key={item.id}>
-                                                                        <img src="/image/icon/tick.png" className="w-5 h-5" alt="" />
-                                                                        <span className="text-sm cursor-pointer">{item.content}</span>
+                                                                        <img src="/image/icon/tick.png" className="w-4 h-4" alt="" />
+                                                                        <span className="text-xs cursor-pointer px-1">{item.content}</span>
                                                                     </div>
                                                                 ))
                                                             )
@@ -649,10 +809,10 @@ const MainDashboardComponent: FC<Services> = ({ Title, Content }) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="bg-gray-50 py-2 sm:px-6 sm:flex sm:flex-row-reverse">
+                                        <div className="bg-gray-50 py-2 sm:px-6 sm:flex sm:flex-row-reverse px-4">
                                             <button onClick={subscribeToNewsletter} type="button"
-                                                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#581C87] text-base font-medium text-white hover:bg-opacity-80 
-                                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#581C87] sm:ml-3 sm:w-auto sm:text-sm">OK</button>
+                                                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#664481] text-base font-medium text-white hover:bg-opacity-80 
+                                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#664481] sm:ml-3 sm:w-auto sm:text-sm">OK</button>
                                             <button onClick={() => setShowModal(false)} type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 
                                                 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 
                                                 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>

@@ -142,7 +142,7 @@ const Register: FC = () => {
                                     placeholder="confirm"
                                 />
                                 <button
-                                    className="mt-5 tracking-wide font-semibold bg-[#581c87] text-gray-100 w-full py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                                    className="mt-5 tracking-wide font-semibold bg-[#664481] text-gray-100 w-full py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                                 >
                                     <svg
                                         className="w-6 h-6 -ml-2"
@@ -161,7 +161,7 @@ const Register: FC = () => {
                                         Register
                                     </span>
                                 </button>
-                                <button onClick={Login} className="mt-5 tracking-wide font-semibold bg-[#581c87] text-gray-100 w-full py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <button onClick={Login} className="mt-5 tracking-wide font-semibold bg-[#664481] text-gray-100 w-full py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <p>Already Registed?</p>
                                     <span className="ml-3">
                                         Login Now

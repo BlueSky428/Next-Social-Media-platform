@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const ServiceDescription: FC = () => {
     return (
-        <main className="py-8 w-full bg-white lg:px-24">
+        <main className="py-4 w-full bg-white lg:px-24">
             <div className="lg:w-[65%] md:w-[70%] overflow-hidden rounded-md p-2 sm:p-4">
                 <div className="w-full items-center">
                     <h1 className="text-xl font-bold">Service Description</h1>

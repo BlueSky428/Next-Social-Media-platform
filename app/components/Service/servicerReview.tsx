@@ -48,7 +48,7 @@ const ServicerReview: FC = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-between mt-4 text-sm text-gray-600 fill-current">
-                    <button type="button" className="w-36 py-3 border border-[#581C87] text-[#681C87] hover:bg-[#581C87] hover:text-white transition duration-300 rounded-sm">Show more</button>
+                    <button type="button" className="w-36 py-3 border border-[#664481] text-[#681C87] hover:bg-[#664481] hover:text-white transition duration-300 rounded-sm">Show more</button>
                 </div>
             </div>
         </div>

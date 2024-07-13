@@ -1,7 +1,8 @@
 "use client"
+import { orderDurationData } from "@/app/data/Freelancer/freelancerData";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FC, useRef, useState } from "react";
 
 type ModalProps = {
     isOpen?: boolean
@@ -16,12 +17,7 @@ type OrderDuration = {
 
 const RequestModal: FC<ModalProps> = ({ isOpen, onClose }) => {
 
-    const [orderDuration, setOrderDuration] = useState<OrderDuration[]>([
-        { id: 0, content: "24 Hours", active: false },
-        { id: 1, content: "3 Days", active: false },
-        { id: 2, content: "7 Days", active: false },
-        { id: 3, content: "Order", active: false },
-    ])
+    const [orderDuration, setOrderDuration] = useState<OrderDuration[]>(orderDurationData)
 
     const [isInput, setIsInput] = useState<boolean>(false);
     const inputRef = useRef<HTMLDivElement>(null);
@@ -74,74 +70,10 @@ const RequestModal: FC<ModalProps> = ({ isOpen, onClose }) => {
     }
 
     return (
-        // <div className={`${isOpen ? "w-full lg:h-[100vh] md:h-[650px] sm:h-[700px] h-[650px] flex justify-center items-center fixed -mt-[5.5rem] z-50 top-0 px-2" : "hidden"}`}>
-        //     <div className="lg:w-[30%] md:w-[45%] sm:w-full w-full h-[81%] bg-white mt-24 animate-slide-in rounded-lg border border-[#591c87]">
-        //         <div className="h-[10%]">
-        //             <header className="px-2 py-4 w-full h-full flex justify-center items-center bg-[#581c87] text-white rounded-t-lg relative" onClick={handleInputSet}>
-        //                 Request A Quote
-
-        //             </header>
-        //         </div>
-        //         <div className="h-[90%] flex flex-col justify-center overflow-y-scroll py-2">
-        //             <div className="w-full h-[20%] px-2 flex items-center mt-48" onClick={handleInputSet}>
-        //                 <div className="lg:px-2 flex justify-center items-center">
-        //                     <div className="w-16 h-16 bg-[#581c87] rounded-full flex justify-center items-center">
-        //                         <span className="text-white text-lg font-bold">H</span>
-        //                     </div>
-        //                 </div>
-        //                 <div className="w-[80%] flex flex-col justify-center px-4">
-        //                     <span className="font-bold text-sm">Brlan And Dee</span>
-        //                     <span className="text-sm">
-        //                         Hi, please provide your request details below and I'll get back to you.
-        //                     </span>
-        //                 </div>
-        //             </div>
-        //             <div className="w-full h-auto flex flex-col items-center px-2" onClick={handleInputSet}>
-        //                 <div className="px-4">
-        //                     <span className="lg:text-sm md:text-sm sm:text-xs text-xs font-bold">Describe the service you're looking to purchase - please be as detailed as possible:</span>
-        //                 </div>
-        //                 <div className="w-full">
-        //                     <div className="px-4">
-        //                         <textarea name="feedback" id="feedback" rows={4}
-        //                             cols={80}
-        //                             className="mt-4 w-full border px-3 py-3 bg-gray-100 placeholder-black text-gray-800 rounded-lg text-sm focus:outline-none"
-        //                             placeholder="I'm looking for..." required>
-        //                         </textarea>
-        //                     </div>
-        //                 </div>
-        //                 <div className="w-full">
-        //                     <div className="px-4">
-
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="w-full h-auto flex flex-col items-center px-2 mt-4">
-        //                 <div className="px-4">
-        //                     <span className="lg:text-sm md:text-sm sm:text-xs text-xs font-bold">Once you place your order, when would you like your service dellvered?</span>
-        //                 </div>
-
-        //             </div>
-        //             <div className="w-full h-auto flex flex-col justify-center px-2 mt-4" onClick={handleInputSet}>
-        //                 <div className="px-4">
-        //                     <span className="lg:text-sm md:text-sm sm:text-xs text-xs font-bold">What is your budget for this service?</span>
-        //                 </div>
-
-        //             </div>
-        //             <div className="w-full h-auto flex flex-col justify-center px-2 mt-4" onClick={handleInputSet}>
-
-        //             </div>
-        //             <div className="w-full h-auto flex flex-col justify-center px-2 mt-4" onClick={handleInputSet}>
-        //                 <div className="w-auto px-4 flex justify-end items-center">
-        //                     <button type="button" className="px-2 py-2 bg-[#581c87] text-white rounded">Submit Request</button>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
         <div className={`${isOpen ? "fixed z-50 inset-0 flex items-center justify-center animate-slide-in" : "hidden"}`}>
             <div className="absolute inset-0"></div>
             <div className="relative bg-white rounded-lg overflow-hidden shadow-xl max-w-screen-sm w-full m-4 transition-transform transform-gpu">
-                <div className="px-6 py-4 bg-[#581c87]">
+                <div className="px-6 py-4 bg-[#664481]">
                     <h3 className="text-lg leading-6 font-medium text-white"> Request A Quote </h3>
                     <div className="w-6 h-6 rounded-full bg-white absolute top-4 right-2 flex justify-center items-center cursor-pointer" onClick={onClose}>
                         <FontAwesomeIcon icon={faClose} color="#591c87" />
@@ -150,7 +82,7 @@ const RequestModal: FC<ModalProps> = ({ isOpen, onClose }) => {
                 <div className="prose max-w-screen-md p-6 overflow-y-auto" style={{ maxHeight: '70vh', backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '0.375rem', boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)' }}>
                     <div className="flex ustify-center">
                         <div className="flex-shrink-0">
-                            <div className="w-12 h-12 bg-[#581c87] text-white rounded-full flex items-center justify-center">
+                            <div className="w-12 h-12 bg-[#664481] text-white rounded-full flex items-center justify-center">
                                 H
                             </div>
                         </div>
@@ -207,7 +139,7 @@ const RequestModal: FC<ModalProps> = ({ isOpen, onClose }) => {
                         <div className="w-full mt-4">
                             <div className="lg:w-[25%] md:w-[25%] sm:w-[25%] w-[50%] flex items-center h-10 border">
                                 <div className="w-[30%] h-full flex justify-center items-center">
-                                    <span className="text-xs text-[#581c87]">{budgetType}</span>
+                                    <span className="text-xs text-[#664481]">{budgetType}</span>
                                 </div>
                                 <div className="w-[70%] h-full flex items-center">
                                     <input type="text" className="w-full h-full focus:outline-none border-none text-sm outline-none" value={budget} onChange={onChangeBudget} />
@@ -217,7 +149,7 @@ const RequestModal: FC<ModalProps> = ({ isOpen, onClose }) => {
                     </div>
                     <div className="flex flex-col justify-center mt-4 w-full">
                         <div className="w-auto px-1">
-                            <span className="text-xs text-[#581c87] cursor-pointer hover:border-b border-[#581c87]" onClick={handleChangeBudgetType}>{budgetType === "SEK" ? "Convert to USD" : "Convert to SEK"}</span>
+                            <span className="text-xs text-[#664481] cursor-pointer hover:border-b border-[#664481]" onClick={handleChangeBudgetType}>{budgetType === "SEK" ? "Convert to USD" : "Convert to SEK"}</span>
                         </div>
                     </div>
                 </div>
