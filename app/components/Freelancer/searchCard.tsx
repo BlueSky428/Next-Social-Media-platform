@@ -1,4 +1,5 @@
 "use client"
+import { categoryListData } from "@/app/data/Freelancer/freelancerData";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useState } from "react";
@@ -10,19 +11,7 @@ type Category = {
 
 const SearchCard: FC = () => {
 
-    const [categoryList, setCategoryList] = useState<Category[]>([
-        { id: 0, content: "Marketing & Advertsing" },
-        { id: 1, content: "Media & Entertainment" },
-        { id: 2, content: "Financial & Business Services" },
-        { id: 3, content: "MFinancial & Business Services" },
-        { id: 4, content: "Art & Design" },
-        { id: 5, content: "Fashion & Apparel" },
-        { id: 6, content: "Education" },
-        { id: 7, content: "Technology" },
-        { id: 8, content: "Photograpy & VideoGraphy" },
-        { id: 9, content: "Beauty & Consmetics" },
-        { id: 10, content: "Food & Beverage" },
-    ])
+    const [categoryList, setCategoryList] = useState<Category[]>(categoryListData)
 
     const [isOpen, setIsOpen] = useState(false);
     const [categoryContent, setCategoryContent] = useState<string>("All Industries");
@@ -55,7 +44,7 @@ const SearchCard: FC = () => {
                     <div className="flex items-center space-x-2 rounded p-2">
                         <div className="flex justify-center">
                             <div className="relative inline-block">
-                                <button onClick={toggleDropdown} className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-gray rounded-md focus:border-[#581c87] focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-[#581c87] dark:focus:ring-[#581c87] focus:ring dark:text-white focus:outline-none">
+                                <button onClick={toggleDropdown} className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-gray rounded-md focus:border-[#664481] focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-[#664481] dark:focus:ring-[#664481] focus:ring dark:text-white focus:outline-none">
                                     <span className="mx-1 text-black">{categoryContent}</span>
                                     <svg className={`w-5 h-5 mx-1 transition duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="black"></path>
@@ -68,7 +57,7 @@ const SearchCard: FC = () => {
                                                 <a key={
                                                     category.id
                                                 } onClick={() => handleCategoryContent(category.id)}
-                                                    className="block w-full h-8 cursor-pointer flex items-center px-4 text-sm text-gray-900 capitalize transition-colors duration-200 transform dark:text-gray-900 hover:bg-gray-100 dark:hover:bg-[#581c87] dark:hover:text-white"
+                                                    className="block w-full h-8 cursor-pointer flex items-center px-4 text-sm text-gray-900 capitalize transition-colors duration-200 transform dark:text-gray-900 hover:bg-gray-100 dark:hover:bg-[#664481] dark:hover:text-white"
                                                 >
                                                     {category.content}
                                                 </a>

@@ -14,7 +14,7 @@ const Section: FC = () => {
                                 <p className="mb-4">We enjoy helping small and medium sized tech businesses take a shot at established
                                     Fortune 500 companies</p>
                             </div>
-                            <button type="button" className="flex justify-center items-center px-6 text-white rounded-lg py-3 bg-[#581c87] lg:mt-12 md:mt-4 sm:mt-4 mt-4">Start For Free</button>
+                            <button type="button" className="flex justify-center items-center px-6 text-white rounded-lg py-3 bg-[#664481] lg:mt-12 md:mt-4 sm:mt-4 mt-4">Start For Free</button>
                         </div>
                         <div className="lg:col-span-7 md:mt-8 sm:mt-8 mt-4">
                             <div className="xl:ml-14">

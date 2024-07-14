@@ -105,7 +105,7 @@ const FAQ: FC = () => {
                             onClick={() => toggleFAQ(index)}
                         >
                             {faq.question}
-                            <span className="h-6 w-6 flex items-center justify-center text-teal-500 bg-[#581C87] rounded-full">
+                            <span className="h-6 w-6 flex items-center justify-center text-teal-500 bg-[#664481] rounded-full">
                                 {activeIndex === index ? (
                                     <img src='/image/icon/minuse.png' />
                                 ) : (
@@ -123,7 +123,7 @@ const FAQ: FC = () => {
             </div>
             <div>
                 <button type="button"
-                    className="focus:outline-none text-white text-sm py-2.5 px-4 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border duration-300 bg-[#581C87]">
+                    className="focus:outline-none text-white text-sm py-2.5 px-4 rounded-md hover:opacity-80 hover:shadow-lg flex items-center border duration-300 bg-[#664481]">
                     <span className="text-white">View more</span>
                 </button>
             </div>

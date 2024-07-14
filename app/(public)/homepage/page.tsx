@@ -1,4 +1,6 @@
 "use client"
+import Footer from "@/app/components/Footer/page";
+import Header from "@/app/components/Header/page";
 import DemoComponent from "@/app/components/homepage/demo";
 import ExpertFreelancer from "@/app/components/homepage/expertFreelancer";
 import HomePageComponent from "@/app/components/homepage/homepage";
@@ -12,6 +14,7 @@ import { FC } from "react";
 const HomePage: FC = () => {
     return (
         <>
+            <Header />
             <HomePageComponent />
             <DemoComponent />
             <PopularCategory />
@@ -20,6 +23,7 @@ const HomePage: FC = () => {
             <ExpertFreelancer />
             <TrendingOffers />
             <LastSection />
+            <Footer />
         </>
     )
 }

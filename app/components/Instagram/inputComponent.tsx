@@ -60,7 +60,7 @@ const InputComponent: FC<Type> = ({ type }) => {
                                         min="0"
                                         className="w-[60%] appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                     />
-                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#581C87] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
+                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#664481] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
                                         {instagramvideodownloader[0].buttonContent}
                                     </button>
                                 </div>
@@ -85,7 +85,7 @@ const InputComponent: FC<Type> = ({ type }) => {
                                         min="0"
                                         className="w-[60%] appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                     />
-                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#581C87] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
+                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#664481] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
                                         {instagramvideodownloader[1].buttonContent}
                                     </button>
                                 </div>
@@ -110,7 +110,7 @@ const InputComponent: FC<Type> = ({ type }) => {
                                         min="0"
                                         className="w-[60%] appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                     />
-                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#581C87] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
+                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#664481] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
                                         {instagramvideodownloader[2].buttonContent}
                                     </button>
                                 </div>
@@ -135,7 +135,7 @@ const InputComponent: FC<Type> = ({ type }) => {
                                         min="0"
                                         className="w-[60%] appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                     />
-                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#581C87] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
+                                    <button className="w-[30%] hover:shadow-form rounded-md bg-[#664481] py-3 px-8 text-center text-base font-semibold text-white outline-none flex justify-center items-center">
                                         {instagramvideodownloader[3].buttonContent}
                                     </button>
                                 </div>
